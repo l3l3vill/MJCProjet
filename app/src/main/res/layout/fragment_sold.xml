@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Fragments.SoldFragment">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@color/light_grey"
+       >
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/leftblock"
+            android:layout_marginBottom="20dp">
+
+        </ImageView>
+        <TextView
+            android:text="@string/solde"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:layout_marginBottom="20dp">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="40€"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:gravity="center"
+
+            >
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_make_a_don"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/orange_border_background"
+            android:fontFamily="@font/roboto"
+            android:paddingStart="30dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="30dp"
+            android:paddingBottom="5dp"
+            android:text="@string/button_don"
+            android:textSize="20sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_make_advance"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/orange_border_background"
+
+            android:paddingStart="30dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="30dp"
+            android:paddingBottom="5dp"
+            android:text="@string/button_advance"
+
+            android:textSize="20sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_make_repartition"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="@string/button_repartition"
+            android:textSize="20sp"
+
+            android:background="@drawable/orange_border_background"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+>
+
+        </TextView>
+
+    </LinearLayout>
+
+
+</layout>

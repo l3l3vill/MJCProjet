@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Fragments.AboutUs">
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@color/light_grey">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/mjclogo">
+
+        </ImageView>
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/for_more_information_a"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_marginBottom="30dp">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/for_more_information_b"
+            android:textSize="20sp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center">
+
+        </TextView>
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/for_more_information_c"
+            android:textSize="20sp"
+            android:layout_marginBottom="50dp">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/for_more_information_d"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_marginBottom="20dp">
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/for_more_information_e"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_marginBottom="50dp">
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/for_more_information_f"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_marginBottom="50dp"
+            android:textStyle="bold">
+        </TextView>
+
+
+
+
+    </LinearLayout>
+
+
+</layout>

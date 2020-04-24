@@ -1,0 +1,63 @@
+<resources>
+    <string name="app_name">MJCProjet</string>
+
+    <string name="email">Email</string>
+    <string name="phone_number">Teléphone portable</string>
+    <string name="sign_up">Inscription</string>
+    <string name="sign_in">Se conecter</string>
+    <string name="name">Prénom</string>
+    <string name="last_name">Nom</string>
+    <string name="birth_date">Date de naissance</string>
+    <string name="address">Adresse postale:</string>
+    <string name="street_name">Numéro et nom de la voie</string>
+    <string name="post_code">Code postale</string>
+    <string name="city_name">Ville</string>
+    <string name="country">Pays</string>
+    <string name="user_information">Mes informations</string>
+    <string name="update">Mettre à jour</string>
+    <string name="permission_denied">Autorisations refusées</string>
+    <string name="password_sigin">Mot de passe</string>
+    <string name="next">Suivant</string>
+    <string name="solde">Votre crédit est de :</string>
+    <string name="atc">En poursuivant la navigation j\'accepte les CGU</string>
+    <string name="communication_title">Chères Adhérentes, Chers Adhérents,</string>
+    <string name="communication_a">Suite à la crise sanitaire sans précédent que nous vivons, l\'équipe de la MJC avait à coeur que vous puissiez poursuivre vos ateliers à distance (MJC Hors les murs, dans vos murs).</string>
+    <string name="communication_b">Nous sommes conscients que certains d\'entre vous n\'ont pas pu accéder aux cours virtuels proposés par notre maison.</string>
+    <string name="communication_c">Notre présidente du conseil d\'administration, Catherine Humez, vous offre donc la possibilité de générer un crédit en avoir pour la saison 2020/2021 ou de reverser celui-ci sous forme de don solidaire à notre association.</string>
+    <string name="communication_d">Nos adhérents sont la force de la MJC . Nous comptons sur vous pour nous informer de votre choix avant le 15/06/2020.</string>
+    <string name="communication_e">Vous pouvez donc utiliser ce crédit de trois manières :</string>
+    <string name="communication_f"> - Faire un don solidaire de la totalité du montant</string>
+    <string name="communication_g"> - Obtenir un avoir pour la saison 2020/2021, valable jusqu\'au 15/06/2021</string>
+    <string name="communication_h"> - Répartir votre crédit entre don solidaire  et avoir</string>
+    <string name="communication_i"> Exemple = j\'ai 40 euros de crédit. Je fais un don de 20€ et je conserve 20€ en avoir pour la saison 2020/2021</string>
+    <string name="communication_j">Si vous avez des difficultés, vous pouvez nous contacter  au 03 27 87 16 07</string>
+    <string name="communication_next">Pour continuer, cliquer ici</string>
+    <string name="communication_k">SANS REPONSE DE VOTRE PART AVANT LE 15/06/2020 NOUS NOUS PERMETTRONS DE CONSIDERER QUE VOTRE CREDIT EST UN DON SOLIDAIRE POUR LA MJC</string>
+    <string name="button_don">Je fais un don solidaire de la totalité à la MJC / ESPACE HELIOS</string>
+    <string name="button_advance">Je souhaite un avoir sur la totalité de mon crédit</string>
+    <string name="button_repartition">Je choisis une répartition solidaire</string>
+    <string name="thanks_donation">Toute l\'équipe vous remercie de votre soutien et espère vous revoir très bientôt dans les murs de la MJC / ESPACE HELIOS</string>
+    <string name="for_more_information">Pour plus de renseignements, nous sommes disponibles </string>
+    <string name="for_more_information_a">Pour plus de renseignements, nous sommes disponibles </string>
+    <string name="for_more_information_b">du mardi au vendredi de 10h à 12h et de 14h à 18h </string>
+    <string name="for_more_information_c">Samedis de 14h à 18h</string>
+    <string name="for_more_information_d">contact@mjclambres.fr</string>
+    <string name="for_more_information_e">03 27 87 16 07</string>
+    <string name="for_more_information_f">Merci et à très vite pour de belles émotions</string>
+    <string name="advance_a">Nous vous remercions de votre réponse et serons heureux de vous retrouver pour la saison 2020/2021</string>
+    <string name="advance_b">Merci de vous munir de votre avoir, valable jusqu\'au 15/06/2021, lors de votre prochaine inscription</string>
+    <string name="advance_button">Cliquez ici</string>
+    <string name="distribute_a">Montant à répartir</string>
+    <string name="distribute_donation">Don à la MJC/ESPACE HELIOS :</string>
+    <string name="distribute_avoir">Avoir :</string>
+    <string name="distribute_validate">Valider.</string>
+    <string name="validate_pdf_mail">Recevez votre avoir par mail</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="pdf">ici PDF</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

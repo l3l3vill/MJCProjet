@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/comunicationFragment">
+
+    <fragment
+        android:id="@+id/comunicationFragment"
+        android:name="com.ideasfactory.mjcprojet.Fragments.comunicationFragment"
+        android:label="fragment_comunication"
+        tools:layout="@layout/fragment_comunication" >
+        <action
+            android:id="@+id/action_comunicationFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.ideasfactory.mjcprojet.Fragments.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_soldFragment"
+            app:destination="@id/soldFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/soldFragment"
+        android:name="com.ideasfactory.mjcprojet.Fragments.SoldFragment"
+        android:label="fragment_sold"
+        tools:layout="@layout/fragment_sold" >
+        <action
+            android:id="@+id/action_soldFragment_to_donnationFragment"
+            app:destination="@id/donnationFragment" />
+        <action
+            android:id="@+id/action_soldFragment_to_advanceFragment"
+            app:destination="@id/advanceFragment" />
+        <action
+            android:id="@+id/action_soldFragment_to_distributeFragment"
+            app:destination="@id/distributeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/donnationFragment"
+        android:name="com.ideasfactory.mjcprojet.Fragments.donnationFragment"
+        android:label="fragment_donnation"
+        tools:layout="@layout/fragment_donnation" />
+    <fragment
+        android:id="@+id/advanceFragment"
+        android:name="com.ideasfactory.mjcprojet.Fragments.advanceFragment"
+        android:label="fragment_advance"
+        tools:layout="@layout/fragment_advance" >
+        <action
+            android:id="@+id/action_advanceFragment_to_pdfViewFragment"
+            app:destination="@id/pdfViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/distributeFragment"
+        android:name="com.ideasfactory.mjcprojet.Fragments.distributeFragment"
+        android:label="fragment_distribute"
+        tools:layout="@layout/fragment_distribute" >
+        <action
+            android:id="@+id/action_distributeFragment_to_distributedConfirmPfFragment"
+            app:destination="@id/distributedConfirmPfFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/distributedConfirmPfFragment"
+        android:name="com.ideasfactory.mjcprojet.Fragments.distributedConfirmPfFragment"
+        android:label="fragment_distributed_confirm_pf"
+        tools:layout="@layout/fragment_distributed_confirm_pf" >
+        <action
+            android:id="@+id/action_distributedConfirmPfFragment_to_pdfViewFragment"
+            app:destination="@id/pdfViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pdfViewFragment"
+        android:name="com.ideasfactory.mjcprojet.Fragments.pdfViewFragment"
+        android:label="fragment_pdf_view"
+        tools:layout="@layout/fragment_pdf_view" >
+        <action
+            android:id="@+id/action_pdfViewFragment_to_aboutUs"
+            app:destination="@id/aboutUs" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutUs"
+        android:name="com.ideasfactory.mjcprojet.Fragments.AboutUs"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us" />
+</navigation>
