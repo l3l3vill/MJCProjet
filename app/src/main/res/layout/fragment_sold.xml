@@ -25,13 +25,14 @@
             android:text="@string/solde"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
+            android:textSize="26sp"
             android:gravity="center"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="15dp">
 
         </TextView>
 
         <TextView
+            android:id="@+id/tv_solde"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="40€"
@@ -45,9 +46,11 @@
 
         <TextView
             android:id="@+id/tv_make_a_don"
+            android:clickable="true"
+            android:focusable="true"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/orange_border_background"
             android:fontFamily="@font/roboto"
             android:paddingStart="30dp"
@@ -65,7 +68,8 @@
             android:layout_height="60dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/orange_border_background"
-
+            android:clickable="true"
+            android:focusable="true"
             android:paddingStart="30dp"
             android:paddingTop="5dp"
             android:paddingEnd="30dp"
@@ -83,7 +87,8 @@
             android:layout_height="60dp"
             android:text="@string/button_repartition"
             android:textSize="20sp"
-
+            android:clickable="true"
+            android:focusable="true"
             android:background="@drawable/orange_border_background"
             android:paddingStart="30dp"
             android:paddingEnd="30dp"

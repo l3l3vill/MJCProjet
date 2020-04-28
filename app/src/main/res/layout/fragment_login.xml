@@ -4,17 +4,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.LoginFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/light_grey">
+        android:background="@color/light_grey"
+        android:padding="16dp">
         <LinearLayout
 
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_margin="16dp"
             android:weightSum="100"
             >
 
@@ -22,7 +21,7 @@
                 android:id="@+id/iv_logo"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                app:srcCompat="@drawable/mjclogo"
+                android:src="@drawable/mjclogo"
                 android:layout_weight="40"
                 android:scaleType="centerInside"
                 android:padding="20dp"/>
@@ -32,92 +31,107 @@
                 android:layout_height="0dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
-                android:layout_weight="50"
+                android:layout_weight="60"
                 android:orientation="vertical"
-                android:weightSum="120">
+                android:gravity="center">
+
+                <EditText
+                    android:id="@+id/et_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/edit_text_background"
+                    android:hint="@string/name"
+                    android:padding="10dp"
+                    android:selectAllOnFocus="true"
+                    android:textColor="@color/gray"
+                    android:textColorHint="@color/gray"
+                    android:inputType="text"
+                    />
+
+                <EditText
+                    android:id="@+id/et_lastname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/edit_text_background"
+                    android:hint="@string/last_name"
+                    android:padding="10dp"
+                    android:selectAllOnFocus="true"
+                    android:textColor="@color/gray"
+                    android:textColorHint="@color/gray"
+                    android:inputType="text"
+                    />
+
+                <EditText
+                    android:id="@+id/et_email"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text_background"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"
+                    android:padding="10dp"
+                    android:selectAllOnFocus="true"
+                    android:textColor="@color/gray"
+                    android:textColorHint="@color/gray"
+                    />
+
+
 
                 <EditText
                     android:id="@+id/et_phone"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:layout_weight="20"
                     android:background="@drawable/edit_text_background"
                     android:hint="@string/phone_number"
-                    android:imeOptions="actionDone"
                     android:inputType="number"
                     android:padding="10dp"
                     android:selectAllOnFocus="true"
                     android:textColor="@color/gray"
                     android:textColorHint="@color/gray"
-                    tools:ignore="NestedWeights,TextFields" />
+                    tools:ignore="TextFields" />
 
                 <EditText
-                    android:id="@+id/et_email"
+                    android:id="@+id/et_password"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:layout_weight="20"
                     android:background="@drawable/edit_text_background"
-                    android:hint="@string/email"
-                    android:imeOptions="actionDone"
-                    android:inputType="textEmailAddress"
+                    android:hint="@string/password_sigin"
+                    android:inputType="textPassword"
                     android:padding="10dp"
                     android:selectAllOnFocus="true"
                     android:textColor="@color/gray"
-                    android:textColorHint="@color/gray" />
-
-                <EditText
-                    android:id="@+id/et_lastname"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_weight="20"
-                    android:background="@drawable/edit_text_background"
-                    android:hint="@string/last_name"
-                    android:imeOptions="actionDone"
-                    android:padding="10dp"
-                    android:selectAllOnFocus="true"
-                    android:textColor="@color/gray"
-                    android:textColorHint="@color/gray" />
+                    android:textColorHint="@color/gray"
+                    />
 
 
-                <EditText
-                    android:id="@+id/et_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_weight="20"
-                    android:background="@drawable/edit_text_background"
-                    android:hint="@string/name"
-                    android:imeOptions="actionDone"
-                    android:padding="10dp"
-                    android:selectAllOnFocus="true"
-                    android:textColor="@color/gray"
-                    android:textColorHint="@color/gray" />
+
 
 
                 <CheckBox
                     android:id="@+id/checkBox"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="20"
+                    android:layout_height="wrap_content"
                     android:text="@string/atc" />
 
                 <Button
-                    android:id="@+id/btn_sign_in"
+                    android:id="@+id/btn_sign_up_user"
                     android:layout_width="wrap_content"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="10dp"
-                    android:layout_weight="20"
                     android:background="@drawable/buttons_background"
                     android:paddingStart="50dp"
                     android:paddingEnd="50dp"
-                    android:text="@string/next"
+                    android:text="@string/sign_in"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="18sp"
+                    android:clickable="true"
+                    android:focusable="true"
 
                     />
 

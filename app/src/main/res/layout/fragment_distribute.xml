@@ -31,9 +31,10 @@
         </TextView>
 
         <TextView
+            android:id="@+id/tv_solde_to_distribute"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="40€"
+            android:text="40"
             android:textSize="30sp"
             android:textStyle="bold"
             android:gravity="center"
@@ -60,6 +61,7 @@
             </TextView>
 
             <EditText
+                android:id="@+id/et_solde_to_don"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="00.0"
@@ -81,6 +83,21 @@
 
         </LinearLayout>
 
+        <Button
+            android:id="@+id/btn_valider_don"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/orange_border_background"
+            android:paddingStart="50dp"
+            android:paddingEnd="50dp"
+            android:text="@string/distribute_validate_don"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+
+            />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -98,17 +115,17 @@
 
             </TextView>
 
-            <EditText
+            <TextView
+                android:id="@+id/et_solde_to_avoir"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="00.0"
-                android:inputType="number"
+                android:text="00"
                 android:textSize="20sp"
                 tools:ignore="TextFields">
+            </TextView>
 
-            </EditText>
+            <TextView
 
-            <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="€"
@@ -116,18 +133,18 @@
                 android:textSize="20sp"
                 tools:ignore="TextFields">
 
-            </EditText>
+            </TextView>
 
 
 
         </LinearLayout>
 
         <Button
-            android:id="@+id/btn_sign_in"
+            android:id="@+id/btn_valider_avoir"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/buttons_background"
             android:paddingStart="50dp"
             android:paddingEnd="50dp"

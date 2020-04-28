@@ -50,11 +50,14 @@
     <string name="distribute_a">Montant à répartir</string>
     <string name="distribute_donation">Don à la MJC/ESPACE HELIOS :</string>
     <string name="distribute_avoir">Avoir :</string>
-    <string name="distribute_validate">Valider.</string>
+    <string name="distribute_validate">Valider avoir.</string>
+    <string name="distribute_validate_don">Valider don.</string>
+
+
     <string name="validate_pdf_mail">Recevez votre avoir par mail</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="pdf">ici PDF</string>
+    <string name="pdf">Valider Avoir</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

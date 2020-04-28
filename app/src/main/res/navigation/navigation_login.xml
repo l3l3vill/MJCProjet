@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_login"
+    app:startDestination="@id/comunicationFragment2">
+
+    <fragment
+        android:id="@+id/comunicationFragment2"
+        android:name="com.ideasfactory.mjcprojet.Fragments.comunicationFragment"
+        android:label="fragment_comunication"
+        tools:layout="@layout/fragment_comunication" >
+        <action
+            android:id="@+id/action_comunicationFragment2_to_loginFragment2"
+            app:destination="@id/loginFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment2"
+        android:name="com.ideasfactory.mjcprojet.Fragments.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+</navigation>

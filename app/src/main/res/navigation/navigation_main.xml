@@ -3,26 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_main"
-    app:startDestination="@id/comunicationFragment">
+    app:startDestination="@id/soldFragment">
 
-    <fragment
-        android:id="@+id/comunicationFragment"
-        android:name="com.ideasfactory.mjcprojet.Fragments.comunicationFragment"
-        android:label="fragment_comunication"
-        tools:layout="@layout/fragment_comunication" >
-        <action
-            android:id="@+id/action_comunicationFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.ideasfactory.mjcprojet.Fragments.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
-        <action
-            android:id="@+id/action_loginFragment_to_soldFragment"
-            app:destination="@id/soldFragment" />
-    </fragment>
     <fragment
         android:id="@+id/soldFragment"
         android:name="com.ideasfactory.mjcprojet.Fragments.SoldFragment"
