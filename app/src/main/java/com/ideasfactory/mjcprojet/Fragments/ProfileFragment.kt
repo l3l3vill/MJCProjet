@@ -11,6 +11,8 @@ import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
 
 import com.ideasfactory.mjcprojet.R
 import com.ideasfactory.mjcprojet.databinding.FragmentProfileBinding
@@ -27,8 +29,11 @@ class ProfileFragment : Fragment() {
     lateinit var userMail : TextView
     lateinit var userNumber : EditText
     private lateinit var auth: FirebaseAuth
-
+    private lateinit var currentUser : FirebaseUser
     private val TAG = "PROFILEFRAGMENT"
+    lateinit var refDataBaseApp : DatabaseReference
+    lateinit var refDataBaseDatasource : DatabaseReference
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,10 +47,14 @@ class ProfileFragment : Fragment() {
         userMail = binding.etEmail
         userNumber = binding.etAdherentNumber
 
+        auth = FirebaseAuth.getInstance()
+        currentUser = auth.currentUser!!
 
 
         return binding.root
     }
+
+
 
 
 }

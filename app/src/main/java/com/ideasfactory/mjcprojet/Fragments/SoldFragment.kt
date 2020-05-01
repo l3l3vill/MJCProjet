@@ -32,14 +32,19 @@ class SoldFragment : Fragment(), View.OnClickListener {
     lateinit var makeDistribution : TextView
     lateinit var solde : TextView
 
+
     lateinit var refDataBaseApp : DatabaseReference
     lateinit var refDataBaseDatasource : DatabaseReference
     lateinit var firebaseDatabase: FirebaseDatabase
+
+    val TAG : String = "SOLDFRAGMENT"
 
 
     lateinit var auth : FirebaseAuth
     lateinit var userId : String
     var listUser = ArrayList<UserDataSource?>()
+    /*var userPhone : String = ""*/
+    var userSolde : String = ""
 
 
     override fun onCreateView(
@@ -56,21 +61,11 @@ class SoldFragment : Fragment(), View.OnClickListener {
         makeDon.setOnClickListener(this)
         makeAdvance.setOnClickListener(this)
         makeDistribution.setOnClickListener(this)
-
-        //APP DATABASE
-        refDataBaseApp = FirebaseDatabase.getInstance().getReference("mjc_users_app")
-
-        //SOURCE DATABASE
-        refDataBaseDatasource = FirebaseDatabase.getInstance().getReference("mjc_users_datasource")
-
-
         firebaseDatabase = FirebaseDatabase.getInstance()
-
-
-
 
         auth = FirebaseAuth.getInstance()
         userId = auth.currentUser!!.uid
+
 
 
 
@@ -78,9 +73,24 @@ class SoldFragment : Fragment(), View.OnClickListener {
     }
 
 
+    override fun onStart() {
+        super.onStart()
+        refDataBaseApp = FirebaseDatabase.getInstance().getReference("mjc_users_app")
+
+        refDataBaseApp.child(userId).addListenerForSingleValueEvent(object: ValueEventListener{
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                solde.text = dataSnapshot.child("app_user_amount_final").value.toString()
 
 
+            }
 
+        })
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)

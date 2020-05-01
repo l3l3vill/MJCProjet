@@ -51,6 +51,7 @@ class LoginFragment : Fragment(), View.OnClickListener, Observer {
     lateinit var listUser : MutableList<UserDataSource>
     lateinit var forgotPassWord : TextView
     //lateinit var changeTelephone : TextView
+    var userAppAmountInit = ""
 
 
 
@@ -169,6 +170,7 @@ class LoginFragment : Fragment(), View.OnClickListener, Observer {
                 if (dataSnapshot.exists()) {
                     listUser.clear()
                     var x = 0 //-> variable to save the state (0 = phone different , 1 = phone equal)
+
                     for (snapshot in dataSnapshot.children) {
                         //Snapshot represents each element in database
                         Log.i("LoginFragment", "SnapShot = each firebase user $snapshot")
@@ -181,6 +183,8 @@ class LoginFragment : Fragment(), View.OnClickListener, Observer {
                             x = x //-> variable = 0 to phone different
                         } else {
                             x = x +1 //-> variable = 1 to phone equal
+                            userAppAmountInit = snapshot.child("datasource_user_amount_init").value.toString()
+
                         }
                     }
                     if(x == 0){
@@ -192,7 +196,7 @@ class LoginFragment : Fragment(), View.OnClickListener, Observer {
                         //Toast.makeText(context, "votre numero exites dans notre base donée", Toast.LENGTH_SHORT).show();
 
                         //-------------------------------PONER TODO ESTO EN UN MÉTODO: CONECCIÓN CON EMAIL Y PASWORD--------------------------------------
-                            //conectionEmailPasword (email : String , pasword: String)
+                        //conectionEmailPasword (email : String , pasword: String)
                         progressBar.visibility = View.VISIBLE
 
                         auth.createUserWithEmailAndPassword(emailInput, passwordInput)
@@ -202,7 +206,7 @@ class LoginFragment : Fragment(), View.OnClickListener, Observer {
                                     userId = fbUser!!.uid
 
 
-                                    val user = User("",0,0,0,nameInput,emailInput,"",lastNameInput,telephoneInput,"Android")
+                                    val user = User("","",userAppAmountInit,"",nameInput,emailInput,"",lastNameInput,telephoneInput,"Android")
                                     refDataBaseApp.child(userId).setValue(user).addOnCompleteListener {
                                         //Toast.makeText(context, "RealTime DataBase User updated", Toast.LENGTH_SHORT).show();
                                     }
@@ -259,6 +263,10 @@ class LoginFragment : Fragment(), View.OnClickListener, Observer {
 
 
 
+
+    }
+
+    fun authWithMailAndPassword(password: String, email : String){
 
     }
 

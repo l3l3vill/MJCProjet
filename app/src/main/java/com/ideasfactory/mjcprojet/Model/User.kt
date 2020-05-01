@@ -3,9 +3,9 @@ package com.ideasfactory.mjcprojet.Model
  class User(
     //el id del usuario de la app está regido por el id de firebase Auth
     val app_user_actiontype : String,
-    val app_user_amount_donation : Int,
-    val app_user_amount_final : Int,
-    val app_user_amount_voucher : Int,
+    val app_user_amount_donation : String,
+    val app_user_amount_final : String,
+    val app_user_amount_voucher : String,
     val app_user_firstname : String,
     val app_user_mail: String,
     val app_user_modified_date : String,//TODO-> timestamp
@@ -15,7 +15,7 @@ package com.ideasfactory.mjcprojet.Model
 
 ) {
 
-     constructor(): this("",0,0,0,"","","","","","Android")
+     constructor(): this("","","","","","","","","","Android")
 
 
 
@@ -37,20 +37,6 @@ package com.ideasfactory.mjcprojet.Model
          if (app_user_os != other.app_user_os) return false
 
          return true
-     }
-
-     override fun hashCode(): Int {
-         var result = app_user_actiontype.hashCode()
-         result = 31 * result + app_user_amount_donation
-         result = 31 * result + app_user_amount_final
-         result = 31 * result + app_user_amount_voucher
-         result = 31 * result + app_user_firstname.hashCode()
-         result = 31 * result + app_user_mail.hashCode()
-         result = 31 * result + app_user_modified_date.hashCode()
-         result = 31 * result + app_user_name.hashCode()
-         result = 31 * result + app_user_phone.hashCode()
-         result = 31 * result + app_user_os.hashCode()
-         return result
      }
 
      override fun toString(): String {

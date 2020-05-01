@@ -35,7 +35,7 @@
             android:id="@+id/tv_solde"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="40€"
+            android:text=""
             android:textSize="30sp"
             android:textStyle="bold"
             android:gravity="center"
@@ -48,7 +48,7 @@
             android:id="@+id/tv_make_repartition"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:text="@string/button_repartition"
             android:textSize="20sp"
             android:clickable="true"
@@ -56,8 +56,7 @@
             android:background="@drawable/edit_text_background"
             android:paddingStart="30dp"
             android:paddingEnd="30dp"
-            android:paddingBottom="15dp"
-            android:paddingTop="15dp"
+            android:gravity="center"
             >
 
         </TextView>
@@ -67,31 +66,30 @@
             android:clickable="true"
             android:focusable="true"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:background="@drawable/edit_text_background"
             android:fontFamily="@font/roboto"
             android:paddingStart="30dp"
-            android:paddingTop="5dp"
             android:paddingEnd="30dp"
-            android:paddingBottom="5dp"
             android:text="@string/button_don"
-            android:textSize="20sp">
+            android:textSize="20sp"
+            android:gravity="center">
 
         </TextView>
 
         <TextView
             android:id="@+id/tv_make_advance"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/edit_text_background"
             android:clickable="true"
             android:focusable="true"
             android:paddingStart="30dp"
-            android:paddingTop="5dp"
             android:paddingEnd="30dp"
             android:paddingBottom="5dp"
+            android:gravity="center"
             android:text="@string/button_advance"
 
             android:textSize="20sp">
