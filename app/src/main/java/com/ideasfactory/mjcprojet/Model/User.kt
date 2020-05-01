@@ -8,11 +8,16 @@ package com.ideasfactory.mjcprojet.Model
     val app_user_amount_voucher : Int,
     val app_user_firstname : String,
     val app_user_mail: String,
-    val app_user_modified_date : String,
+    val app_user_modified_date : String,//TODO-> timestamp
     val app_user_name : String,
-    val app_user_phone : String
+    val app_user_phone : String,
+    val app_user_os : String = "Android"
 
 ) {
+
+     constructor(): this("",0,0,0,"","","","","","Android")
+
+
 
      override fun equals(other: Any?): Boolean {
          if (this === other) return true
@@ -29,6 +34,7 @@ package com.ideasfactory.mjcprojet.Model
          if (app_user_modified_date != other.app_user_modified_date) return false
          if (app_user_name != other.app_user_name) return false
          if (app_user_phone != other.app_user_phone) return false
+         if (app_user_os != other.app_user_os) return false
 
          return true
      }
@@ -43,6 +49,13 @@ package com.ideasfactory.mjcprojet.Model
          result = 31 * result + app_user_modified_date.hashCode()
          result = 31 * result + app_user_name.hashCode()
          result = 31 * result + app_user_phone.hashCode()
+         result = 31 * result + app_user_os.hashCode()
          return result
      }
+
+     override fun toString(): String {
+         return "User(app_user_actiontype='$app_user_actiontype', app_user_amount_donation=$app_user_amount_donation, app_user_amount_final=$app_user_amount_final, app_user_amount_voucher=$app_user_amount_voucher, app_user_firstname='$app_user_firstname', app_user_mail='$app_user_mail', app_user_modified_date='$app_user_modified_date', app_user_name='$app_user_name', app_user_phone='$app_user_phone', app_user_os='$app_user_os')"
+     }
+
+
  }

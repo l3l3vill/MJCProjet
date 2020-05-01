@@ -45,11 +45,6 @@ class pdfViewFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_pdf_view, container, false )
 
-
-
-
-
-
         signAdvance = binding.bttnSignAdvance
 
         if (ActivityCompat.checkSelfPermission(
@@ -101,9 +96,6 @@ class pdfViewFragment : Fragment() {
             }
 
             pdfDocument.close()
-
-
-
 
     }
 

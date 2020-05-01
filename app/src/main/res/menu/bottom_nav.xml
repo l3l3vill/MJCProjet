@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/soldFragment"
+        android:title="Gestion"
+        android:icon="@drawable/gestionblue">
+
+    </item>
+
+    <item
+        android:id="@+id/profileFragment2"
+        android:title="Profile"
+        android:icon="@drawable/ic_stat_name">
+
+    </item>
+
+
+</menu>

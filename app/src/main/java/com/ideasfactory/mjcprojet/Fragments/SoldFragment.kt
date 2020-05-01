@@ -2,6 +2,7 @@ package com.ideasfactory.mjcprojet.Fragments
 
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,10 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
+import com.ideasfactory.mjcprojet.Model.User
+import com.ideasfactory.mjcprojet.Model.UserDataSource
 
 import com.ideasfactory.mjcprojet.R
 import com.ideasfactory.mjcprojet.databinding.FragmentSoldBinding
@@ -26,6 +31,15 @@ class SoldFragment : Fragment(), View.OnClickListener {
     lateinit var makeAdvance : TextView
     lateinit var makeDistribution : TextView
     lateinit var solde : TextView
+
+    lateinit var refDataBaseApp : DatabaseReference
+    lateinit var refDataBaseDatasource : DatabaseReference
+    lateinit var firebaseDatabase: FirebaseDatabase
+
+
+    lateinit var auth : FirebaseAuth
+    lateinit var userId : String
+    var listUser = ArrayList<UserDataSource?>()
 
 
     override fun onCreateView(
@@ -43,8 +57,29 @@ class SoldFragment : Fragment(), View.OnClickListener {
         makeAdvance.setOnClickListener(this)
         makeDistribution.setOnClickListener(this)
 
+        //APP DATABASE
+        refDataBaseApp = FirebaseDatabase.getInstance().getReference("mjc_users_app")
+
+        //SOURCE DATABASE
+        refDataBaseDatasource = FirebaseDatabase.getInstance().getReference("mjc_users_datasource")
+
+
+        firebaseDatabase = FirebaseDatabase.getInstance()
+
+
+
+
+        auth = FirebaseAuth.getInstance()
+        userId = auth.currentUser!!.uid
+
+
+
         return binding.root
     }
+
+
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

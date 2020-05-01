@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     android:orientation="vertical">
 
     <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/nav_host_main"
+        android:layout_weight="1"
         android:name="androidx.navigation.fragment.NavHostFragment"
         app:defaultNavHost="true"
         app:navGraph="@navigation/navigation_main"
@@ -18,7 +22,23 @@
         >
 
     </fragment>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemBackground="@color/white"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        app:menu="@menu/bottom_nav"
+        android:id="@+id/bottom_navigation"
+
+        >
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
 
 
 
 </LinearLayout>
+
+</layout>
