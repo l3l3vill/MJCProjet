@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -31,6 +32,14 @@ class advanceFragment : Fragment(), View.OnClickListener {
         advancedButton = binding.btnConfirmAdvance
 
         advancedButton.setOnClickListener(this)
+
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true /* enabled by default */) {
+                override fun handleOnBackPressed() {
+                    // Handle the back button event
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
 
 
         return binding.root

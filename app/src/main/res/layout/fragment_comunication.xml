@@ -156,15 +156,12 @@
 
         <Button
             android:id="@+id/btn_sign_in"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center_horizontal"
             android:layout_margin="10dp"
             android:layout_weight="20"
             android:background="@drawable/buttons_background"
-            android:paddingStart="50dp"
-            android:paddingEnd="50dp"
-            android:paddingTop="5dp"
             android:paddingBottom="5dp"
             android:text="@string/communication_next"
             android:textAllCaps="false"
@@ -191,8 +188,28 @@
             android:layout_height="wrap_content"
             android:text="@string/communication_d"
             android:textSize="16sp"
-            android:layout_marginBottom="20dp" />
+            android:layout_marginBottom="10dp"
+            />
 
+        <TextView
+            android:id="@+id/comunication_telephone"
+            android:layout_width="match_parent"
+            android:textAlignment="center"
+            android:layout_height="wrap_content"
+            android:text="03 27 87 16 07"
+            android:textSize="18sp"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/buttons_background"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+
+            />
+
+ <!--       0327871607-->
 
     </LinearLayout>
     </ScrollView>

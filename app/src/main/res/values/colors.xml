@@ -10,4 +10,5 @@
     <color name="light_grey">#EBE5E5</color>
     <color name="transparent">#00000000</color>
     <color name="pink_background">#00A08080</color>
+    <color name="call_color">#0220FC</color>
 </resources>

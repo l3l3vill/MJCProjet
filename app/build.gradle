@@ -49,5 +49,8 @@ dependencies {
     //pdf
     implementation 'com.itextpdf:itextg:5.5.10'
 
+    //minus, plus
+    implementation 'com.github.travijuu:numberpicker:1.0.7'
+
 
 }

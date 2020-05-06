@@ -18,10 +18,12 @@
     <string name="update">Mettre à jour</string>
     <string name="permission_denied">Autorisations refusées</string>
     <string name="password_sigin">Mot de passe</string>
+    <string name="password_sigup">Je crée un mot de passe</string>
     <string name="forgot_password">J\'ai oublié mon mot de passe</string>
+    <string name="i_have_account">J\'ai dejà un compte</string>
     <string name="forgot_telephone">J\'ai changé de numéro de téléphone</string>
     <string name="next">Suivant</string>
-    <string name="solde">Votre crédit est de :</string>
+    <string name="solde">Votre crédit est de</string>
     <string name="atc">En poursuivant la navigation j\'accepte les CGU</string>
     <string name="communication_title">Chères adhérentes, chers adhérents,</string>
     <string name="communication_a">Suite à la crise sanitaire sans précédent que nous vivons, l’équipe de la MJC a à coeur que vous puissiez poursuivre vos ateliers à distance jusqu\'à la fin de la saison : “MJC hors les murs, dans vos murs”.</string>
@@ -34,7 +36,7 @@
     <string name="communication_j">-  Réponse indispensable avant le 15/06/2020 -</string>
     <string name="communication_next">Pour continuer, cliquer ici</string>
     <string name="communication_k">Les ateliers reprendront de manière habituelle en septembre</string>
-    <string name="communication_d">Si vous avez des difficultés, vous pouvez nous contacter au 03 27 87 16 07</string>
+    <string name="communication_d">Si vous avez des difficultés, vous pouvez nous contacter au :</string>
     <string name="button_don">Je souhaite faire un don solidaire à l’association</string>
     <string name="button_advance">Je souhaite un avoir sur la totalité</string>
     <string name="button_repartition">Je souhaite une répartition entre un don solidaire et un avoir</string>
@@ -46,21 +48,29 @@
     <string name="for_more_information_d">contact@mjclambres.fr</string>
     <string name="for_more_information_e">03 27 87 16 07</string>
     <string name="for_more_information_f">Merci et à très vite pour de belles émotions</string>
-    <string name="advance_a">Nous vous remercions de votre réponse et serons heureux de vous retrouver pour la saison 2020/2021</string>
-    <string name="advance_b">Merci de vous munir de votre avoir, valable jusqu\'au 15/06/2021, lors de votre prochaine inscription</string>
+    <string name="advance_a">Nous vous remercions de votre fidélité et serons heureux de vous retrouver pour la saison 2020/2021</string>
+    <string name="advance_b">Merci de vous munir de votre avoir lors de votre prochaine inscription</string>
+    <string name="advance_c">- - valable jusqu\'au 15/06/2021 - -</string>
     <string name="advance_button">Cliquez ici</string>
     <string name="distribute_a">Montant à répartir</string>
-    <string name="distribute_donation">Don à la MJC/ESPACE HELIOS :</string>
-    <string name="distribute_avoir">Avoir :</string>
-    <string name="distribute_validate">Valider avoir.</string>
+    <string name="distribute_donation">Je fais un don de :</string>
+    <string name="distribute_donation_a_mjc">Don à la MJC/ESPACE HELIOS</string>
+    <string name="distribute_avoir">Mon avoir sera de :</string>
+    <string name="distribute_validate">Je valide</string>
     <string name="distribute_validate_don">Valider don.</string>
     <string name="forgot_telephone_dialog">Votre numéro n\'existe pas en base, veuillez contacter la MJC afin de mettre à jour vos données personnelles</string>
+    <string name="legal_mentions">Mentions Légales</string>
+    <string name="legal_mentions_link">https://www.mjclambres.fr/article/liens-utiles/mentions-legales</string>
+    <string name="confirm_desition">voudrais vouz confirmer votre donation de xx€ et votre avoir de xx€?</string>
+    <string name="confirm_donation">voudrais vouz confirmer votre donation de la totalité de vote sold xx€?</string>
+    <string name="confirm_avoir">voudrais vouz confirmer votre donation de avoir de totalité de vote sold xx€?</string>
+    <string name="no_credit_dialog">Votre crédit sera mis à jour lors de votre nouvelle inscription</string>
 
 
-    <string name="validate_pdf_mail">Recevez votre avoir par mail</string>
+    <string name="validate_pdf_mail">Je sauvegarde mon avoir</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="pdf">Valider Avoir</string>
+    <string name="pdf">Télecharger Avoir</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

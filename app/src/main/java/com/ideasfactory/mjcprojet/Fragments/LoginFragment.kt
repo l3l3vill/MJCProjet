@@ -1,6 +1,7 @@
 package com.ideasfactory.mjcprojet.Fragments
 
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.ContentValues
 import android.content.DialogInterface
@@ -17,6 +18,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.database.*
@@ -26,6 +28,7 @@ import com.ideasfactory.mjcprojet.Model.UserDataSource
 import com.ideasfactory.mjcprojet.Model.UserDataSourceModel
 import com.ideasfactory.mjcprojet.R
 import com.ideasfactory.mjcprojet.databinding.FragmentLoginBinding
+import java.text.SimpleDateFormat
 import java.util.*
 
 /**
@@ -49,12 +52,15 @@ class LoginFragment : Fragment(), View.OnClickListener, Observer {
     lateinit var refDataBaseDatasource : DatabaseReference
     lateinit var userIdSourceDB : String
     lateinit var listUser : MutableList<UserDataSource>
-    lateinit var forgotPassWord : TextView
+    lateinit var iHaveAccount : TextView
     //lateinit var changeTelephone : TextView
     var userAppAmountInit = ""
+    lateinit var timeStamp : String
 
 
 
+
+    @SuppressLint("SimpleDateFormat")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -68,8 +74,12 @@ class LoginFragment : Fragment(), View.OnClickListener, Observer {
         progressBar = binding.progressSignIn
         signUnUserButton= binding.btnSignUpUser
         password = binding.etPassword
-        forgotPassWord = binding.forgotPassword
+        iHaveAccount = binding.tvIHaveAccount
+        timeStamp = SimpleDateFormat("yyyy-MM-dd HH:mm").format(Date())
         //changeTelephone = binding.changeTelephone
+
+        iHaveAccount.setOnClickListener(this)
+
         auth = FirebaseAuth.getInstance()
 
         listUser = mutableListOf()
@@ -77,9 +87,7 @@ class LoginFragment : Fragment(), View.OnClickListener, Observer {
 
         signUnUserButton.setOnClickListener(this)
 
-        forgotPassWord.setOnClickListener {
-            alertDialogForgotPassword()
-        }
+
 /*
         changeTelephone.setOnClickListener{
             Toast.makeText(context, "contactez nous pour valider votre numéro de téléphone", Toast.LENGTH_SHORT).show();
@@ -206,7 +214,7 @@ class LoginFragment : Fragment(), View.OnClickListener, Observer {
                                     userId = fbUser!!.uid
 
 
-                                    val user = User("","",userAppAmountInit,"",nameInput,emailInput,"",lastNameInput,telephoneInput,"Android")
+                                    val user = User("","","",userAppAmountInit,"",nameInput,emailInput,timeStamp,lastNameInput,telephoneInput,"Android")
                                     refDataBaseApp.child(userId).setValue(user).addOnCompleteListener {
                                         //Toast.makeText(context, "RealTime DataBase User updated", Toast.LENGTH_SHORT).show();
                                     }
@@ -243,13 +251,12 @@ class LoginFragment : Fragment(), View.OnClickListener, Observer {
                                 } else {
 
                                     progressBar.visibility = View.INVISIBLE
-                                    Toast.makeText(requireContext(), "Authentification echouee", Toast.LENGTH_SHORT)
-                                        .show()
+                                    Toast.makeText(requireContext(), "Authentification echouee", Toast.LENGTH_SHORT).show()
+
+
                                 }
                             }
 
-
-                        //todo -> si el id del usuario ya existe en la base de datos de FirebaseAuthentication, mostrar un Toast diciendo "usuario existente -- olvidé contraseña"
 
                     }
 
@@ -273,43 +280,31 @@ class LoginFragment : Fragment(), View.OnClickListener, Observer {
     override fun onClick(v: View?) {
         when(v!!.id){
             R.id.btn_sign_up_user -> signUpUser()
+            R.id.tv_i_have_account -> navController.navigate(R.id.action_loginFragment2_to_signInFragment)
         }
     }
 
-    private fun alertDialogForgotPassword(){
-        val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("J'ai oublié mon mot de passe")
-        val view = layoutInflater.inflate(R.layout.dialog_forgot_pasword,null)
-        val emailInput = view.findViewById<EditText>(R.id.et_username)
-        builder.setView(view)
-        builder.setPositiveButton("Valider", DialogInterface.OnClickListener { _, _ ->
-            forgotPassword(emailInput)
-        })
-        builder.setNegativeButton("Fermer", DialogInterface.OnClickListener { _, _ ->
 
-        })
-        builder.show()
-    }
 
     private fun alertDialogChangeTelephone(){
         val builder = AlertDialog.Builder(context)
         val view = layoutInflater.inflate(R.layout.dialog_change_telephone,null)
         //val textChangeTelephone = view.findViewById<TextView>(R.id.change_telephone_dialog)
         builder.setView(view)
-        builder.setNegativeButton("Annuer", DialogInterface.OnClickListener(){_, _ ->
+        builder.setNegativeButton("Annuler", DialogInterface.OnClickListener(){_, _ ->
 
 
         })
         builder.setPositiveButton("Envoyer un mail",DialogInterface.OnClickListener() { _ , _ ->
             val intent = Intent(
                 Intent.ACTION_VIEW,
-                Uri.parse("mailto: lg.villamil.guerrero@gmail.com")//contact@mjclambres.fr
+                Uri.parse("mailto: contact@mjclambres.fr")//contact@mjclambres.fr
             )
             intent.putExtra(
                 Intent.EXTRA_SUBJECT,
                 "Demande de Mise à Jour du Numéro Téléphone Adhérent"
             )
-            intent.putExtra(Intent.EXTRA_TEXT, "Bonjour, blablabla")
+            intent.putExtra(Intent.EXTRA_TEXT, "Bonjour,  Je demande la Mise à Jour du mon Numéro Téléphone")
 
             startActivity(intent)
         })
@@ -317,30 +312,7 @@ class LoginFragment : Fragment(), View.OnClickListener, Observer {
         builder.show()
     }
 
-    private fun forgotPassword(email : EditText){
-        val emailIntput: String = email.text.toString()
-        if(emailIntput.isEmpty()){
-            email.error = "Entrez votre email"
-            email.requestFocus()
-            return
-        }
 
-        if(!Patterns.EMAIL_ADDRESS.matcher(emailIntput).matches()){
-            email.error = "Entrez un email valide"
-            email.requestFocus()
-            return
-        }
-
-        auth.sendPasswordResetEmail(emailIntput)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    Log.d(ContentValues.TAG, "Email envoyé")
-                    Toast.makeText(requireContext(), "Email envoyé", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-
-    }
 
     override fun update(o: Observable?, arg: Any?) {
         val data = UserDataSourceModel.getData()
