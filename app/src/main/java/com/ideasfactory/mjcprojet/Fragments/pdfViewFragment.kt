@@ -2,16 +2,15 @@ package com.ideasfactory.mjcprojet.Fragments
 
 
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.pdf.PdfDocument
-import android.media.Image
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
-import android.provider.DocumentsContract
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -30,13 +29,21 @@ import androidx.navigation.Navigation
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
+import com.ideasfactory.mjcprojet.AppExecutors
 import com.ideasfactory.mjcprojet.R
 import com.ideasfactory.mjcprojet.databinding.FragmentPdfViewBinding
-import com.itextpdf.text.pdf.PdfWriter
-import java.io.*
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
-import java.util.Calendar.getInstance
+import javax.activation.*
+import javax.mail.*
+import javax.mail.internet.InternetAddress
+import javax.mail.internet.MimeBodyPart
+import javax.mail.internet.MimeMessage
+import javax.mail.internet.MimeMultipart
 
 
 /**
@@ -60,6 +67,7 @@ class pdfViewFragment : Fragment() {
     lateinit var userAvoir : TextView
     lateinit var date : TextView
     lateinit var timeStamp : String
+    lateinit var appExecutors: AppExecutors
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -82,15 +90,16 @@ class pdfViewFragment : Fragment() {
         displayUserInformation()
 
 
-
+        checkStoragePermitions()
 
 
         signAdvance.setOnClickListener {
-            checkStoragePermitions()
+
             //navController.navigate(R.id.action_pdfViewFragment_to_aboutUs)
             val linearLayoutPdf = view?.findViewById<View>(R.id.linear_layout_pdf) as LinearLayout
             layoutToImage(linearLayoutPdf)
-            sendEmail()
+            //sendEmail()
+            shareInEmail()
             //Toast.makeText(context, "pdf created", Toast.LENGTH_SHORT).show();
         }
 
@@ -103,6 +112,11 @@ class pdfViewFragment : Fragment() {
             }
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
         return binding.root
+    }
+
+    override fun onAttach(context: Context) {
+        appExecutors = AppExecutors()
+        super.onAttach(context)
     }
 
     fun displayUserInformation(){
@@ -178,8 +192,8 @@ class pdfViewFragment : Fragment() {
             e.printStackTrace()
         }
 
-        // Create a PdfDocument with a page of the same size as the image
-        val document: PdfDocument = PdfDocument()
+        //-----------------------------Create a PdfDocument with a page of the same size as the image----------------
+       /* val document: PdfDocument = PdfDocument()
         val pageInfo: PdfDocument.PageInfo  = PdfDocument.PageInfo.Builder(bm.width, bm.height, 1).create()
         val page: PdfDocument.Page  = document.startPage(pageInfo)
 
@@ -191,7 +205,7 @@ class pdfViewFragment : Fragment() {
         // Write the PDF file to a file
         val directoryPath: String  = android.os.Environment.getExternalStorageDirectory().toString()
         document.writeTo( FileOutputStream(directoryPath + File.separator + "Avoir+$timeStamp.pdf"))
-        document.close()
+        document.close()*/
 
 
     }
@@ -199,8 +213,9 @@ class pdfViewFragment : Fragment() {
 
 
 
-    private fun sendEmail() {
-        val filename = "Avoir+$timeStamp.pdf"//Avoir+$timeStamp.jpg
+    private fun shareInEmail() {
+        //val filename = "Avoir+$timeStamp.pdf"//Avoir+$timeStamp.jpg
+        val filename = "Avoir+$timeStamp.jpg"
         val filelocation = File(Environment.getExternalStorageDirectory().getAbsolutePath(), filename)
         val path = Uri.fromFile(filelocation)
         val emailIntent = Intent(Intent.ACTION_SEND)
@@ -216,33 +231,84 @@ class pdfViewFragment : Fragment() {
     }
 
 
+    private fun sendEmail(){
+        appExecutors.diskIO().execute {
+            val props = System.getProperties()
+            props.put("mail.smtp.host", "smtp.gmail.com")
+            props.put("mail.smtp.socketFactory.port", "465")
+            props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory")
+            props.put("mail.smtp.auth", "true")
+            props.put("mail.smtp.port", "465")
+
+            val session =  Session.getInstance(props,
+                object : javax.mail.Authenticator() {
+                    //Authenticating the password
+                    override fun getPasswordAuthentication(): PasswordAuthentication {
+                        return PasswordAuthentication(Credentials.EMAIL, Credentials.PASSWORD)
+                    }
+                })
+
+            try {
+                //Creating MimeMessage object
+                val mm = MimeMessage(session)
+                val emailId = currentUser.email//emailEditText.text.toString()
+                //Setting sender address
+                mm.setFrom(InternetAddress(Credentials.EMAIL))
+                //Adding receiver
+                mm.addRecipient(Message.RecipientType.TO,
+                    InternetAddress(emailId))
+                //Adding subject
+                mm.subject = "MJC validation Avoir"
+
+                // Create the message part
+                var messageBodyPart: BodyPart = MimeBodyPart()
+
+                // Fill the message
+                messageBodyPart.setText("This is message body")
+
+                // Create a multipar message
+                val multipart: Multipart = MimeMultipart()
+                multipart.addBodyPart(messageBodyPart)
+
+                //File location to attach
+                val filename = "Avoir+$timeStamp.pdf"//Avoir+$timeStamp.jpg
+                val filelocation = File(Environment.getExternalStorageDirectory().getAbsolutePath(), filename)
+
+                // Part two is attachment
+                messageBodyPart = MimeBodyPart()
+                val source: DataSource = FileDataSource(filelocation)
+                messageBodyPart.dataHandler = DataHandler(source)
+                messageBodyPart.fileName = filename
+                multipart.addBodyPart(messageBodyPart)
 
 
+                val mc: MailcapCommandMap = CommandMap.getDefaultCommandMap() as MailcapCommandMap
+                mc.addMailcap("text/html;; x-java-content-handler=com.sun.mail.handlers.text_html")
+                mc.addMailcap("text/xml;; x-java-content-handler=com.sun.mail.handlers.text_xml")
+                mc.addMailcap("text/plain;; x-java-content-handler=com.sun.mail.handlers.text_plain")
+                mc.addMailcap("multipart/*;; x-java-content-handler=com.sun.mail.handlers.multipart_mixed")
+                mc.addMailcap("message/rfc822;; x-java-content- handler=com.sun.mail.handlers.message_rfc822")
 
-  /*  @Throws(FileNotFoundException::class)
-    fun imageToPDF() {
-        try {
-            val document = DocumentsContract.Document()
-            dirpath = Environment.getExternalStorageDirectory().toString()
-            PdfWriter.getInstance(
-                document,
-                FileOutputStream("$dirpath/NewPDF.pdf")
-            ) //  Change pdf's name.
-            document.open()
-            val img: Image = Image.getInstance(
-                Environment.getExternalStorageDirectory()
-                    .toString() + File.separator + "image.jpg"
-            )
-            val scaler: Float = (document.getPageSize().getWidth() - document.leftMargin()
-                    - document.rightMargin() - 0) / img.getWidth() * 100
-            img.scalePercent(scaler)
-            img.setAlignment(Image.ALIGN_CENTER or Image.ALIGN_TOP)
-            document.add(img)
-            document.close()
-            Toast.makeText(this, "PDF Generated successfully!..", Toast.LENGTH_SHORT).show()
-        } catch (e: Exception) {
+
+                // Send the complete message parts
+                mm.setContent(multipart)
+
+
+                //Sending email
+                Transport.send(mm)
+
+                appExecutors.mainThread().execute {
+                    Toast.makeText(context, "Email envoye", Toast.LENGTH_SHORT).show();
+                }
+
+            } catch (e: MessagingException) {
+                e.printStackTrace()
+            }
         }
     }
-*/
+
+
+
+
 
 }

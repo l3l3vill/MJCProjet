@@ -1,6 +1,8 @@
 package com.ideasfactory.mjcprojet.Fragments
 
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -20,6 +22,7 @@ import com.ideasfactory.mjcprojet.Model.User
 
 import com.ideasfactory.mjcprojet.R
 import com.ideasfactory.mjcprojet.databinding.FragmentProfileBinding
+import kotlinx.android.synthetic.main.dialog_update_user_information.*
 import java.util.*
 
 /**
@@ -28,11 +31,11 @@ import java.util.*
 class ProfileFragment : Fragment() {
 
     lateinit var binding : FragmentProfileBinding
-    lateinit var userLastName : EditText
-    lateinit var userName : EditText
+    lateinit var userLastName : TextView
+    lateinit var userName : TextView
     lateinit var userPhone : TextView
     lateinit var userMail : TextView
-    lateinit var updateButton : Button
+    //lateinit var updateButton : Button
     private lateinit var auth: FirebaseAuth
     private lateinit var currentUser : FirebaseUser
     private val TAG = "PROFILEFRAGMENT"
@@ -42,6 +45,7 @@ class ProfileFragment : Fragment() {
     lateinit var linkLegalMentions : TextView
     lateinit var consultVoucher : TextView
     lateinit var navController: NavController
+   lateinit var solde : String
 
 
 
@@ -56,7 +60,7 @@ class ProfileFragment : Fragment() {
         userName = binding.etName
         userPhone = binding.etPhone
         userMail = binding.etEmail
-        updateButton = binding.btnUpdate
+        //updateButton = binding.btnUpdate
         signOut = binding.signOut
         auth = FirebaseAuth.getInstance()
         currentUser = auth.currentUser!!
@@ -68,15 +72,27 @@ class ProfileFragment : Fragment() {
 
         displayUserInformation()
 
+        userSold()
 
-
+/*
         updateButton.setOnClickListener {
-            updateUserInformation()
+            //updateUserInformation()
+            alertDialogUpdateName()
+        }
+*/
+
+        userName.setOnClickListener {
+            alertDialogUpdateName()
+        }
+
+        userLastName.setOnClickListener {
+            alertDialogUpdateLastName()
         }
 
         signOut.setOnClickListener {
             auth.signOut()
             startActivity(Intent(requireContext(), LoginActivity::class.java))
+
         }
 
         linkLegalMentions.setOnClickListener {
@@ -85,9 +101,13 @@ class ProfileFragment : Fragment() {
         }
 
         consultVoucher.setOnClickListener {
-            navController.navigate(R.id.action_profileFragment2_to_pdfViewFragment)
-        }
+            if (solde.toDouble() > 0.0) {
 
+                Toast.makeText(context, "Aucun document disponible. Veuillez vérifier les options dans votre espace Gestion.", Toast.LENGTH_SHORT).show();
+            } else {
+                navController.navigate(R.id.action_profileFragment2_to_pdfViewFragment)
+            }
+        }
 
         return binding.root
     }
@@ -116,33 +136,103 @@ class ProfileFragment : Fragment() {
         })
     }
 
-    fun updateUserInformation(){
-        var nameInput : String = userName.getText().toString()
-        var lastNameInput = userLastName.getText().toString()
+
+    fun userSold(){
+        refDataBaseApp = FirebaseDatabase.getInstance().getReference("mjc_users_app")
+
+        refDataBaseApp.child(userId).addListenerForSingleValueEvent(object: ValueEventListener{
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                solde = dataSnapshot.child("app_user_amount").value.toString()
+
+
+            }
+
+        })
+    }
+
+    private fun alertDialogUpdateName(){
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Metre à jour votre information")
+        val view = layoutInflater.inflate(R.layout.dialog_update_user_information,null)
+        val nameInputView = view.findViewById<EditText>(R.id.et_username)
+        builder.setView(view)
+        builder.setPositiveButton("Valider", DialogInterface.OnClickListener { _, _ ->
+            updateUserName(nameInputView)
+
+        })
+        builder.setNegativeButton("Fermer", DialogInterface.OnClickListener { _, _ ->
+
+        })
+        builder.show()
+    }
+
+    private fun alertDialogUpdateLastName(){
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Metre à jour votre information")
+        val view = layoutInflater.inflate(R.layout.dialog_update_user_information,null)
+        val lastNameInputView = view.findViewById<EditText>(R.id.et_username)
+        lastNameInputView.setHint("Metre a jour votre nom")
+        builder.setView(view)
+        builder.setPositiveButton("Valider", DialogInterface.OnClickListener { _, _ ->
+            updateUserLastName(lastNameInputView)
+
+        })
+        builder.setNegativeButton("Fermer", DialogInterface.OnClickListener { _, _ ->
+
+        })
+        builder.show()
+    }
+
+
+    fun updateUserName(name: EditText){
+        val nameInput = name.text.toString()
 
         if(nameInput.isEmpty()){
-            userName.error ="Metre à jour votre prenom"
-            userName.requestFocus()
+            name.error ="Metre à jour votre prenom"
+            name.requestFocus()
             return
         }
 
-        if(lastNameInput.isEmpty()){
-            userLastName.error = "Metre à jour votre nom"
-            userLastName.requestFocus()
-            return
-        }
 
         val update = mapOf(
-            "app_user_first_name" to nameInput ,
-            "app_user_name" to lastNameInput)
+            "app_user_first_name" to nameInput)
 
 
         refDataBaseApp.child(userId).updateChildren(update)
 
 
+        userName.setText(nameInput)
+
+
 
 
     }
+
+    fun updateUserLastName(lastName : EditText){
+        val lastNameInput = lastName.text.toString()
+
+        if(lastNameInput.isEmpty()){
+            lastName.error = "Metre à jour votre nom"
+            lastName.requestFocus()
+            return
+        }
+
+        val update = mapOf(
+            "app_user_name" to lastNameInput)
+
+
+        refDataBaseApp.child(userId).updateChildren(update)
+
+        userLastName.setText(lastNameInput)
+
+
+
+    }
+
 
 
 

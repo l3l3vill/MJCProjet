@@ -112,7 +112,7 @@ class SoldFragment : Fragment(), View.OnClickListener {
         val view = layoutInflater.inflate(R.layout.dialog_confirmer_donation,null)
         val textDonation = view.findViewById<TextView>(R.id.tv_donation_dialog)
         //todo 1 ->concatenar con valores actuales de donación
-        textDonation.setText("Je souhaite faire un don de la sommes ${solde.text.toString()}")//
+        textDonation.setText("Veuillez confirmer votre don de la totalité de votre crédit de ${solde.text.toString()}€")//
         Log.i(TAG,"${solde.text}")
         builder.setView(view)
         builder.setPositiveButton("Valider donation", DialogInterface.OnClickListener { _, _ ->
@@ -143,7 +143,7 @@ class SoldFragment : Fragment(), View.OnClickListener {
         val view = layoutInflater.inflate(R.layout.dialog_confirmer_avoir,null)
         val textDonation = view.findViewById<TextView>(R.id.tv_avoir_dialog)
         //todo 1 ->concatenar con valores actuales de donación
-        textDonation.setText("voudrais vouz confirmer votre avoir de la totalité de vote sold ${solde.text.toString()}€?")//
+        textDonation.setText("Veuillez confirmer votre avoir de la totalité de votre crédit de ${solde.text.toString()}€?")//
         Log.i(TAG,"${solde.text}")
         builder.setView(view)
         builder.setPositiveButton("Je demande mon avoir", DialogInterface.OnClickListener { _, _ ->

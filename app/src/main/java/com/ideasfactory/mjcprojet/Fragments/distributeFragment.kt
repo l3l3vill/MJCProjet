@@ -121,7 +121,7 @@ class distributeFragment : Fragment(), View.OnClickListener {
         val view = layoutInflater.inflate(R.layout.dialog_confirmer_desition,null)
         val textDesition = view.findViewById<TextView>(R.id.tv_desition)
         //todo 1 ->concatenar con valores actuales de donación
-        textDesition.setText("Voudrais vouz confirmer votre donation de ${etDon.text}€ et votre avoir de ${etAdvance.text}€?")
+        textDesition.setText("Veuillez confirmer votre don solidaire de ${etDon.text}€ et votre avoir de ${etAdvance.text}€?")
         builder.setView(view)
         builder.setPositiveButton("Je valide cette répartition solidarie", DialogInterface.OnClickListener { _, _ ->
             //todo 2 -> actualizar valores en base de datos
@@ -173,7 +173,7 @@ class distributeFragment : Fragment(), View.OnClickListener {
         val solde = soldeToDistribute.text.toString().toDouble()
         if(buttonCalculateClicked == false || donToConfirm.isEmpty() || avoirToConfirm!= solde - donToConfirm.toDouble() ){
             etDon.error //= "click check pour calculer"
-            Toast.makeText(context, "donation invalid , click check pour calculer", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Veuillez cliquer sur Calculer avant de continuer", Toast.LENGTH_SHORT).show()
             //etDon.requestFocus()
             //etDon.clearFocus()
             buttonEffect(buttonCalculate)

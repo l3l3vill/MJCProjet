@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -42,6 +43,8 @@ class comunicationFragment : Fragment(), View.OnClickListener {
 
         buttonNext.setOnClickListener(this)
         phoneNumber.setOnClickListener(this)
+
+
 
 
         return binding.root

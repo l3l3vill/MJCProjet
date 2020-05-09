@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MJCProjet</string>
+    <string name="app_name">MJC Lambres</string>
 
     <string name="email">Email</string>
     <string name="phone_number">Teléphone portable</string>
@@ -20,14 +20,14 @@
     <string name="password_sigin">Mot de passe</string>
     <string name="password_sigup">Je crée un mot de passe</string>
     <string name="forgot_password">J\'ai oublié mon mot de passe</string>
-    <string name="i_have_account">J\'ai dejà un compte</string>
+    <string name="i_have_account">J\'ai déjà un compte</string>
     <string name="forgot_telephone">J\'ai changé de numéro de téléphone</string>
     <string name="next">Suivant</string>
     <string name="solde">Votre crédit est de</string>
     <string name="atc">En poursuivant la navigation j\'accepte les CGU</string>
     <string name="communication_title">Chères adhérentes, chers adhérents,</string>
     <string name="communication_a">Suite à la crise sanitaire sans précédent que nous vivons, l’équipe de la MJC a à coeur que vous puissiez poursuivre vos ateliers à distance jusqu\'à la fin de la saison : “MJC hors les murs, dans vos murs”.</string>
-    <string name="communication_b">Nous sommes conscients que certains d’entre vous n\'ont pas accès aux cours virtuels proposés par notre maison.</string>
+    <string name="communication_b">Nous sommes conscients que certains d’<entre></entre> vous n\'ont pas accès aux cours virtuels proposés par notre maison.</string>
     <string name="communication_c">C’est pourquoi, notre présidente du conseil d’administration, Catherine HUMEZ, vous offre trois possibilités:</string>
     <string name="communication_f">Répartir votre crédit entre un don solidaire à l\'association et un avoir (ex : 25 € de crédit = 10 € de don et 15 € d’avoir)</string>
     <string name="communication_g">Faire un don solidaire de la totalité du montant à l’association</string>
@@ -39,18 +39,20 @@
     <string name="communication_d">Si vous avez des difficultés, vous pouvez nous contacter au :</string>
     <string name="button_don">Je souhaite faire un don solidaire à l’association</string>
     <string name="button_advance">Je souhaite un avoir sur la totalité</string>
-    <string name="button_repartition">Je souhaite une répartition entre un don solidaire et un avoir</string>
+    <string name="button_repartition">Je souhaite faire une répartition entre un don solidaire et un avoir</string>
     <string name="thanks_donation">Toute l\'équipe vous remercie de votre soutien et espère vous revoir très bientôt dans les murs de la MJC / ESPACE HELIOS</string>
     <string name="for_more_information">Pour plus de renseignements, nous sommes disponibles </string>
-    <string name="for_more_information_a">Pour plus de renseignements, nous sommes disponibles </string>
-    <string name="for_more_information_b">du mardi au vendredi de 10h à 12h et de 14h à 18h </string>
+    <string name="for_more_information_a">Pour plus de renseignements,</string>
+    <string name="for_more_information_aa">nous sommes disponibles</string>
+    <string name="for_more_information_b">du mardi au vendredi</string>
+    <string name="for_more_information_ba">de 10h à 12h et de 14h à 18h </string>
     <string name="for_more_information_c">Samedis de 14h à 18h</string>
     <string name="for_more_information_d">contact@mjclambres.fr</string>
     <string name="for_more_information_e">03 27 87 16 07</string>
     <string name="for_more_information_f">Merci et à très vite pour de belles émotions</string>
     <string name="advance_a">Nous vous remercions de votre fidélité et serons heureux de vous retrouver pour la saison 2020/2021</string>
     <string name="advance_b">Merci de vous munir de votre avoir lors de votre prochaine inscription</string>
-    <string name="advance_c">- - valable jusqu\'au 15/06/2021 - -</string>
+    <string name="advance_c">- valable jusqu\'au 15/06/2021 -</string>
     <string name="advance_button">Cliquez ici</string>
     <string name="distribute_a">Montant à répartir</string>
     <string name="distribute_donation">Je fais un don de :</string>
@@ -58,7 +60,7 @@
     <string name="distribute_avoir">Mon avoir sera de :</string>
     <string name="distribute_validate">Je valide</string>
     <string name="distribute_validate_don">Valider don.</string>
-    <string name="forgot_telephone_dialog">Votre numéro n\'existe pas en base, veuillez contacter la MJC afin de mettre à jour vos données personnelles</string>
+    <string name="forgot_telephone_dialog">Votre numéro n’existe pas dans notre base de données. Veuillez contacter la MJC afin de mettre à jour vos données personnelles</string>
     <string name="legal_mentions">Mentions Légales</string>
     <string name="legal_mentions_link">https://www.mjclambres.fr/article/liens-utiles/mentions-legales</string>
     <string name="confirm_desition">voudrais vouz confirmer votre donation de xx€ et votre avoir de xx€?</string>

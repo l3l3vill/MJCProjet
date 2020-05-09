@@ -70,9 +70,9 @@ class donnationFragment : Fragment() {
         )
         intent.putExtra(
             Intent.EXTRA_SUBJECT,
-            "Demande de Mise à Jour du Numéro Téléphone Adhérent"
+            "Donation"
         )
-        intent.putExtra(Intent.EXTRA_TEXT, "Bonjour, blablabla")
+        intent.putExtra(Intent.EXTRA_TEXT, "Bonjour ")
 
         startActivity(intent)
     }

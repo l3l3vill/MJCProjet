@@ -88,7 +88,7 @@
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
                 android:selectAllOnFocus="true"
-                android:text="Montant du don"
+                android:text="Montant de votre don"
                 android:textColor="@color/colorPrimaryDark" />
 
             <TextView
@@ -100,7 +100,7 @@
                 android:paddingEnd="10dp"
                 android:textSize="20sp"
                 android:selectAllOnFocus="true"
-                android:text="Montant du don"
+                android:text="Montant de votre don"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/gray"
 
@@ -113,7 +113,7 @@
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
                 android:selectAllOnFocus="true"
-                android:text="Montant de l'avoir"
+                android:text="Montant de votre avoir"
                 android:textColor="@color/colorPrimaryDark" />
 
             <TextView
@@ -125,7 +125,7 @@
                 android:paddingEnd="10dp"
                 android:textSize="20sp"
                 android:selectAllOnFocus="true"
-                android:text="Montant de l'avoir"
+                android:text="Montant de votre avoir"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/gray"
 

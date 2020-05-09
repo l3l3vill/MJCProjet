@@ -10,7 +10,7 @@
 
     <item
         android:id="@+id/profileFragment2"
-        android:title="Profile"
+        android:title="Profil"
         android:icon="@drawable/ic_stat_name">
 
     </item>

@@ -126,7 +126,7 @@ class LoginFragment : Fragment(), View.OnClickListener, Observer {
 
 
         if(nameInput.isEmpty()){
-            name.error ="Entrez votre prenom"
+            name.error ="Entrez votre prénom"
             name.requestFocus()
             return
         }
@@ -138,19 +138,19 @@ class LoginFragment : Fragment(), View.OnClickListener, Observer {
         }
 
         if(telephoneInput.isEmpty()|| telephoneInput.length != 10){
-            telephone.error = "Entrez un numéro de télephone portable valid"
+            telephone.error = "Veuillez entrer un numéro de téléphone valide"
             telephone.requestFocus()
             return
         }
 
         if(emailInput.isEmpty()){
-            email.error = "Entrez votre email"
+            email.error = "Veuillez entrer une adresse email valide"
             email.requestFocus()
             return
         }
 
         if (!Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
-            email.error = "Entrez un email valide"
+            email.error = "Veuillez entrer une adresse email valide"
             email.requestFocus()
             return
         }
@@ -158,7 +158,7 @@ class LoginFragment : Fragment(), View.OnClickListener, Observer {
 
 
         if(passwordInput.isEmpty() || passwordInput.length < 8 ){
-            password.error = "Entrez un mot de passe avec au moins 8 caractères"
+            password.error = "Veuillez entrer un mot de passe avec au moins 8 caractères"
             password.requestFocus()
             return
         }
@@ -196,7 +196,7 @@ class LoginFragment : Fragment(), View.OnClickListener, Observer {
                         }
                     }
                     if(x == 0){
-                        Log.i("LoginFragment", "votre numero n'exites pas dans notre base donée")
+                        Log.i("LoginFragment", "Votre numéro n’existe pas dans notre base de données. Veuillez contacter la MJC afin de mettre à jour vos données personnelles")
                         //Toast.makeText(context, "votre numero n'exites pas dans notre base donée", Toast.LENGTH_SHORT).show()
                         alertDialogChangeTelephone()
                     }else{
