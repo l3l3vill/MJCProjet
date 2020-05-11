@@ -2,6 +2,7 @@ package com.ideasfactory.mjcprojet.Model
 
  class User(
     //el id del usuario de la app está regido por el id de firebase Auth
+     val app_user_first_connect : String,
      val app_user_action_date : String,
      val app_user_action_type : String,
     val app_user_amount_donation : String,
@@ -16,7 +17,7 @@ package com.ideasfactory.mjcprojet.Model
 
 ) {
 
-     constructor(): this("","","","","","","","","","","Android")
+     constructor(): this("","","","","","","","","","","","Android")
 
      override fun equals(other: Any?): Boolean {
          if (this === other) return true

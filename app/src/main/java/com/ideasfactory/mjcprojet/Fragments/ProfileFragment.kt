@@ -6,24 +6,23 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.ideasfactory.mjcprojet.LoginActivity
-import com.ideasfactory.mjcprojet.Model.User
-
 import com.ideasfactory.mjcprojet.R
 import com.ideasfactory.mjcprojet.databinding.FragmentProfileBinding
-import kotlinx.android.synthetic.main.dialog_update_user_information.*
-import java.util.*
 
 /**
  * A simple [Fragment] subclass.
@@ -45,8 +44,9 @@ class ProfileFragment : Fragment() {
     lateinit var linkLegalMentions : TextView
     lateinit var consultVoucher : TextView
     lateinit var navController: NavController
-   lateinit var solde : String
-
+    lateinit var solde : String
+    lateinit var refDataBaseDatasource : DatabaseReference
+    lateinit var actionType : String
 
 
 
@@ -69,6 +69,8 @@ class ProfileFragment : Fragment() {
 
         userId = currentUser.uid
         refDataBaseApp =  FirebaseDatabase.getInstance().getReference("mjc_users_app")
+        refDataBaseDatasource = FirebaseDatabase.getInstance().getReference("mjc_users_datasource")
+
 
         displayUserInformation()
 
@@ -81,6 +83,7 @@ class ProfileFragment : Fragment() {
         }
 */
 
+
         userName.setOnClickListener {
             alertDialogUpdateName()
         }
@@ -91,8 +94,9 @@ class ProfileFragment : Fragment() {
 
         signOut.setOnClickListener {
             auth.signOut()
-            startActivity(Intent(requireContext(), LoginActivity::class.java))
-
+            var intent = Intent(requireContext(), LoginActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            startActivity(intent)
         }
 
         linkLegalMentions.setOnClickListener {
@@ -101,7 +105,7 @@ class ProfileFragment : Fragment() {
         }
 
         consultVoucher.setOnClickListener {
-            if (solde.toDouble() > 0.0) {
+            if (actionType.isEmpty()) {
 
                 Toast.makeText(context, "Aucun document disponible. Veuillez vérifier les options dans votre espace Gestion.", Toast.LENGTH_SHORT).show();
             } else {
@@ -147,6 +151,7 @@ class ProfileFragment : Fragment() {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 solde = dataSnapshot.child("app_user_amount").value.toString()
+                actionType = dataSnapshot.child("app_user_action_type").value.toString()
 
 
             }

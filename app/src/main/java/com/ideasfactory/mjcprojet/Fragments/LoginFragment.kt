@@ -88,10 +88,6 @@ class LoginFragment : Fragment(), View.OnClickListener, Observer {
         signUnUserButton.setOnClickListener(this)
 
 
-/*
-        changeTelephone.setOnClickListener{
-            Toast.makeText(context, "contactez nous pour valider votre numéro de téléphone", Toast.LENGTH_SHORT).show();
-        }*/
 
 
         refDataBaseApp = FirebaseDatabase.getInstance().getReference("mjc_users_app")
@@ -164,11 +160,81 @@ class LoginFragment : Fragment(), View.OnClickListener, Observer {
         }
 
 
+        progressBar.visibility = View.VISIBLE
+
+        auth.createUserWithEmailAndPassword(emailInput, passwordInput)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val fbUser = auth.currentUser
+                    userId = fbUser!!.uid
+
+
+                    val user = User(
+                        "false",
+                        "",
+                        "",
+                        "",
+                        "0.0",
+                        "",
+                        nameInput,
+                        emailInput,
+                        timeStamp,
+                        lastNameInput,
+                        telephoneInput,
+                        "Android"
+                    )
+                    refDataBaseApp.child(userId).setValue(user).addOnCompleteListener {
+                        //Toast.makeText(context, "RealTime DataBase User updated", Toast.LENGTH_SHORT).show();
+                    }
+
+                    val profileUpdates_name: UserProfileChangeRequest =
+                        UserProfileChangeRequest.Builder().setDisplayName(nameInput).build()
+                    fbUser?.updateProfile(profileUpdates_name)
+
+                    //-------------------------
+                    refDataBaseApp.child(userId).child("app_user_phone")
+                        .addValueEventListener(object : ValueEventListener {
+                            override fun onCancelled(p0: DatabaseError) {
+                                TODO("Not yet implemented")
+                            }
+
+                            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                Log.i("LoginFRagment", " phone number APP data base $dataSnapshot")
+                            }
+
+                        })
+
+                    //-----------------
+                    fbUser?.sendEmailVerification()
+                        ?.addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                /*Toast.makeText(
+                                    requireContext(), "Authentification reussie",
+                                    Toast.LENGTH_SHORT
+                                ).show()*/
+                                startActivity(Intent(requireContext(), MainActivity::class.java))
+                                //navController.navigate(R.id.action_loginFragment_to_soldFragment)
+
+                            }
+                        }
+
+                } else {
+
+                    progressBar.visibility = View.INVISIBLE
+                    Toast.makeText(requireContext(), "Authentification echouee", Toast.LENGTH_SHORT)
+                        .show()
+
+
+                }
+            }
+
+
 
 //Listen the reference of database "data_source" to see all the data in it.
         //the data that we need to find is phone number
 
-        refDataBaseDatasource.addValueEventListener(object : ValueEventListener{
+        //todo-----------------------------------------------------------------------------------------------
+     /*   refDataBaseDatasource.addValueEventListener(object : ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
                 TODO("Not yet implemented")
             }
@@ -185,20 +251,27 @@ class LoginFragment : Fragment(), View.OnClickListener, Observer {
                         //We need the value of the child "phone_number" of each snapshot
                         var userPhoneSourceDB = snapshot.child("datasource_user_phone").value
                         Log.i("LoginFragment", "user phone ${userPhoneSourceDB.toString()}")
+                        //-----------------------------verification first connection-------------------------------------------
+           *//*             var userFirstConnect= snapshot.child("datasource_user_first_connect").value
+                        Log.i("LoginFragment", "user phone ${userFirstConnect.toString()}")
                         //we compare each phone of the database whith the typed number.
-
+                        if(userFirstConnect == true){
+                           //cambiar data sourse a falso y se inicializa app_data en verdadero
+                            //datasource_first_conect = "false"
+                        }
+               *//*         //------------------------------------------------------------------------------------------
                         if (telephoneInput != userPhoneSourceDB) {
                             x = x //-> variable = 0 to phone different
                         } else {
                             x = x +1 //-> variable = 1 to phone equal
-                            userAppAmountInit = snapshot.child("datasource_user_amount_init").value.toString()
+                            // TODO -> userAppAmountInit = snapshot.child("datasource_user_amount_init").value.toString() // VALOR ASIGNADO EN INICIALIZACIÓN DE LA APP
 
                         }
                     }
                     if(x == 0){
                         Log.i("LoginFragment", "Votre numéro n’existe pas dans notre base de données. Veuillez contacter la MJC afin de mettre à jour vos données personnelles")
                         //Toast.makeText(context, "votre numero n'exites pas dans notre base donée", Toast.LENGTH_SHORT).show()
-                        alertDialogChangeTelephone()
+                        //TODO-> alertDialogChangeTelephone()
                     }else{
                         Log.i("LoginFragment", "votre numero exists dans notre base donée")
                         //Toast.makeText(context, "votre numero exites dans notre base donée", Toast.LENGTH_SHORT).show();
@@ -214,7 +287,7 @@ class LoginFragment : Fragment(), View.OnClickListener, Observer {
                                     userId = fbUser!!.uid
 
 
-                                    val user = User("","","",userAppAmountInit,"",nameInput,emailInput,timeStamp,lastNameInput,telephoneInput,"Android")
+                                    val user = User("false","","","","0","",nameInput,emailInput,timeStamp,lastNameInput,telephoneInput,"Android")
                                     refDataBaseApp.child(userId).setValue(user).addOnCompleteListener {
                                         //Toast.makeText(context, "RealTime DataBase User updated", Toast.LENGTH_SHORT).show();
                                     }
@@ -267,7 +340,7 @@ class LoginFragment : Fragment(), View.OnClickListener, Observer {
 
         })
 
-
+*/
 
 
 
