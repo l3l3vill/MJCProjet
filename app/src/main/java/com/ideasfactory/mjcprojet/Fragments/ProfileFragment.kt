@@ -161,7 +161,7 @@ class ProfileFragment : Fragment() {
 
     private fun alertDialogUpdateName(){
         val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("Metre à jour votre information")
+        builder.setTitle("Mettre à jour votre information")
         val view = layoutInflater.inflate(R.layout.dialog_update_user_information,null)
         val nameInputView = view.findViewById<EditText>(R.id.et_username)
         builder.setView(view)
@@ -177,10 +177,10 @@ class ProfileFragment : Fragment() {
 
     private fun alertDialogUpdateLastName(){
         val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("Metre à jour votre information")
+        builder.setTitle("Mettre à jour votre information")
         val view = layoutInflater.inflate(R.layout.dialog_update_user_information,null)
         val lastNameInputView = view.findViewById<EditText>(R.id.et_username)
-        lastNameInputView.setHint("Metre a jour votre nom")
+        lastNameInputView.setHint("Mettre à jour votre nom")
         builder.setView(view)
         builder.setPositiveButton("Valider", DialogInterface.OnClickListener { _, _ ->
             updateUserLastName(lastNameInputView)

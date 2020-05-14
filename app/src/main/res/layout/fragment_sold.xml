@@ -10,53 +10,84 @@
         android:layout_height="match_parent"
         android:padding="16dp"
         android:orientation="vertical"
-        android:gravity="center"
         android:background="@color/light_grey"
+        android:gravity="center"
        >
 
         <ImageView
             android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_height="100dp"
             android:src="@drawable/leftblock"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center">
 
         </ImageView>
         <TextView
             android:text="@string/solde"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="26sp"
+            android:textSize="24sp"
             android:gravity="center"
-            android:layout_marginBottom="15dp">
+            android:textColor="@color/gray"
+            android:layout_marginBottom="10dp">
 
         </TextView>
 
-        <TextView
-            android:id="@+id/tv_solde"
-            android:layout_width="match_parent"
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
 
-            >
+            android:gravity="center">
 
-        </TextView>
+
+            <TextView
+                android:id="@+id/tv_solde"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="@color/gray"
+
+                >
+
+            </TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" €"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/gray"
+                android:gravity="center"
+
+                >
+
+            </TextView>
+
+
+
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/tv_make_repartition"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/button_repartition"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:clickable="true"
             android:focusable="true"
             android:background="@drawable/edit_text_background"
-            android:paddingStart="30dp"
-            android:paddingEnd="30dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
             android:gravity="center"
+            android:textColor="@color/gray"
             >
 
         </TextView>
@@ -67,34 +98,74 @@
             android:focusable="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/edit_text_background"
             android:fontFamily="@font/roboto"
-            android:paddingStart="30dp"
-            android:paddingEnd="30dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
             android:text="@string/button_don"
-            android:textSize="20sp"
-            android:gravity="center">
+            android:textSize="18sp"
+            android:gravity="center"
+            android:textColor="@color/gray">
 
         </TextView>
 
         <TextView
             android:id="@+id/tv_make_advance"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/edit_text_background"
             android:clickable="true"
             android:focusable="true"
-            android:paddingStart="30dp"
-            android:paddingEnd="30dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
             android:paddingBottom="5dp"
             android:gravity="center"
             android:text="@string/button_advance"
-
-            android:textSize="20sp">
+            android:textSize="18sp"
+            android:textColor="@color/gray">
 
         </TextView>
+
+        <TextView
+            android:id="@+id/tv_don_link"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edit_text_background"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:paddingBottom="5dp"
+            android:gravity="center"
+            android:text="@string/button_don_link"
+            android:textSize="18sp"
+            android:textColor="@color/gray">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_don_personel"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edit_text_background"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:paddingBottom="5dp"
+            android:gravity="center"
+            android:text="@string/button_don_personel"
+            android:textSize="18sp"
+            android:textColor="@color/gray">
+
+        </TextView>
+
+
+
 
 
 

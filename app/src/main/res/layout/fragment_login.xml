@@ -44,34 +44,8 @@
                     android:layout_height="100dp"
                     android:src="@drawable/mjclogo"
                     android:scaleType="centerCrop"
-                    android:padding="10dp"/>
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="______________________________"
-                    android:gravity="center"
-                    android:textSize="26sp"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="20dp">
-
-                </TextView>
-
-                <EditText
-                    android:id="@+id/et_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/edit_text_background"
-                    android:hint="@string/name"
                     android:padding="10dp"
-                    android:selectAllOnFocus="true"
-                    android:textColor="@color/gray"
-
-                    android:inputType="text"
-                    />
+                    android:layout_marginBottom="10dp"/>
 
                 <EditText
                     android:id="@+id/et_lastname"
@@ -81,11 +55,31 @@
                     android:background="@drawable/edit_text_background"
                     android:hint="@string/last_name"
                     android:padding="10dp"
+                    android:textSize="20sp"
                     android:selectAllOnFocus="true"
                     android:textColor="@color/gray"
+                    android:inputType="text"
+                    android:textColorHint="@color/gray"
+                    />
+
+
+
+                <EditText
+                    android:id="@+id/et_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/edit_text_background"
+                    android:hint="@string/name"
+                    android:padding="10dp"
+                    android:textSize="20sp"
+                    android:selectAllOnFocus="true"
+                    android:textColor="@color/gray"
+                    android:textColorHint="@color/gray"
 
                     android:inputType="text"
                     />
+
 
                 <EditText
                     android:id="@+id/et_phone"
@@ -96,8 +90,10 @@
                     android:hint="@string/phone_number"
                     android:inputType="number"
                     android:padding="10dp"
+                    android:textSize="20sp"
                     android:selectAllOnFocus="true"
                     android:textColor="@color/gray"
+                    android:textColorHint="@color/gray"
 
                     tools:ignore="TextFields" />
 
@@ -111,8 +107,10 @@
                     android:hint="@string/email"
                     android:inputType="textEmailAddress"
                     android:padding="10dp"
+                    android:textSize="20sp"
                     android:selectAllOnFocus="true"
                     android:textColor="@color/gray"
+                    android:textColorHint="@color/gray"
 
                     />
 
@@ -127,25 +125,13 @@
                     android:hint="@string/password_sigup"
                     android:inputType="textPassword"
                     android:padding="10dp"
+                    android:textSize="20sp"
                     android:selectAllOnFocus="true"
                     android:textColor="@color/gray"
+                    android:textColorHint="@color/gray"
 
                     />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="______________________________"
-                    android:gravity="center"
-                    android:textSize="26sp"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="20dp">
-
-                </TextView>
-
-
-                <Button
+            <Button
                     android:id="@+id/btn_sign_up_user"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -170,7 +156,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/i_have_account"
                     android:gravity="center"
-                    android:textSize="16sp"
+                    android:textSize="22sp"
                     android:textColor="@color/colorPrimaryDark"
                     android:textStyle="bold"
                     android:fontFamily="@font/roboto_thin"

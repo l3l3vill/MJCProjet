@@ -26,11 +26,13 @@
             android:text="@string/for_more_information_a"
             android:textSize="20sp"
             android:gravity="center"
-            android:layout_marginBottom="30dp">
+            android:layout_marginBottom="30dp"
+            android:textColor="@color/gray">
 
         </TextView>
 
         <TextView
+            android:textColor="@color/gray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/for_more_information_b"
@@ -40,6 +42,7 @@
 
         </TextView>
         <TextView
+            android:textColor="@color/gray"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,16 +58,19 @@
             android:text="@string/for_more_information_d"
             android:textSize="20sp"
             android:gravity="center"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/gray">
         </TextView>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:gravity="center"
             android:text="@string/for_more_information_e"
             android:textSize="20sp"
-            android:gravity="center"
-            android:layout_marginBottom="50dp">
+            android:textColor="@color/gray">
+
         </TextView>
 
         <TextView
@@ -74,7 +80,8 @@
             android:textSize="20sp"
             android:gravity="center"
             android:layout_marginBottom="50dp"
-            android:textStyle="bold">
+            android:textStyle="bold"
+            android:textColor="@color/gray">
         </TextView>
 
 

@@ -14,8 +14,9 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:textColor="@color/gray"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
             android:src="@drawable/mjcicon"
             android:layout_marginBottom="20dp">
 
@@ -24,6 +25,7 @@
 
         <TextView
 
+            android:textColor="@color/gray"
             android:text="@string/distribute_a"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,19 +34,42 @@
             android:layout_marginBottom="10dp">
         </TextView>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
         <TextView
             android:id="@+id/tv_solde_to_distribute"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
-            android:textSize="30sp"
+            android:textSize="26sp"
             android:textStyle="bold"
             android:gravity="center"
-            android:layout_marginBottom="10dp"
+
 
             >
 
         </TextView>
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" €"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/gray"
+
+            >
+
+        </TextView>
+
+    </LinearLayout>
 
 
         <LinearLayout
@@ -59,6 +84,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/distribute_donation"
                 android:textSize="20sp"
+                android:textColor="@color/gray"
 
                 >
 
@@ -66,10 +92,12 @@
 
 
             <EditText
+                android:textColor="@color/gray"
                 android:id="@+id/et_solde_to_don"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="00.0"
+                android:hint="00.00"
+                android:textColorHint="@color/gray"
                 android:inputType="numberDecimal"
                 android:textSize="20sp"
                 tools:ignore="TextFields">
@@ -82,6 +110,7 @@
                 android:text="€"
                 android:inputType="number"
                 android:textSize="20sp"
+                android:textColor="@color/gray"
                 >
 
             </TextView>
@@ -102,6 +131,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/distribute_avoir"
                 android:textSize="20sp"
+                android:textColor="@color/gray"
 
                 >
 
@@ -113,8 +143,9 @@
                 android:id="@+id/et_solde_to_avoir"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="00.0"
+                android:text="00.00"
                 android:textSize="20sp"
+                android:textColor="@color/gray"
                 tools:ignore="TextFields">
             </TextView>
 
@@ -122,8 +153,9 @@
                 android:id="@+id/euro_solde_to_avoir"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="€"
+                android:text=" €"
                 android:inputType="number"
+                android:textColor="@color/gray"
                 android:textSize="20sp"
                 tools:ignore="TextFields">
 
@@ -168,7 +200,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/buttons_background"
             android:text="@string/distribute_validate"
             android:textAllCaps="false"

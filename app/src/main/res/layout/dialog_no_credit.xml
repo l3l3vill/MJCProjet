@@ -5,6 +5,7 @@
 
 
     <TextView
+        android:textColor="@color/gray"
         android:id="@+id/tv_no_credit_dialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

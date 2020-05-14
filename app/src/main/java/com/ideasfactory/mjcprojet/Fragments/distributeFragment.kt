@@ -117,25 +117,25 @@ class distributeFragment : Fragment(), View.OnClickListener {
 
     private fun alertDialogConfirmDon(){
         val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("Repartition")
+        builder.setTitle("Répartition de votre crédit")
         val view = layoutInflater.inflate(R.layout.dialog_confirmer_desition,null)
         val textDesition = view.findViewById<TextView>(R.id.tv_desition)
         //todo 1 ->concatenar con valores actuales de donación
-        textDesition.setText("Veuillez confirmer votre don solidaire de ${etDon.text}€ et votre avoir de ${etAdvance.text}€?")
+        textDesition.setText("Veuillez confirmer votre don solidaire de ${etDon.text.toString()} € et votre avoir de ${etAdvance.text} €")
         builder.setView(view)
-        builder.setPositiveButton("Je valide cette répartition solidarie", DialogInterface.OnClickListener { _, _ ->
+        builder.setPositiveButton("Je valide", DialogInterface.OnClickListener { _, _ ->
             //todo 2 -> actualizar valores en base de datos
             val update = mapOf(
                 "app_user_action_type" to "Repartition" ,
                 "app_user_action_date" to timeStamp.toString(),
                 "app_user_amount_donation" to etDon.text.toString().toDouble().toString() ,
                 "app_user_amount_voucher" to etAdvance.text.toString().toDouble().toString(),
-                "app_user_amount" to "0.0")
+                "app_user_amount" to "0.00")
 
             refDataBaseApp.child(userId).updateChildren(update)
 
             //todo 3 ->toast con validación
-            Toast.makeText(context, "Validation de repartition", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "Validation de repartition", Toast.LENGTH_SHORT).show();
             //todo 4 -> navigate to pdf activity
             navController.navigate(R.id.action_distributeFragment_to_distributedConfirmPfFragment)
 
@@ -173,7 +173,7 @@ class distributeFragment : Fragment(), View.OnClickListener {
         val solde = soldeToDistribute.text.toString().toDouble()
         if(buttonCalculateClicked == false || donToConfirm.isEmpty() || avoirToConfirm!= solde - donToConfirm.toDouble() ){
             etDon.error //= "click check pour calculer"
-            Toast.makeText(context, "Veuillez cliquer sur Calculer avant de continuer", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Veuillez cliquer sur Calculer avant de continuer", Toast.LENGTH_LONG).show()
             //etDon.requestFocus()
             //etDon.clearFocus()
             buttonEffect(buttonCalculate)

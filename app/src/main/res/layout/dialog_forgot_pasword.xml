@@ -11,6 +11,8 @@
     android:id="@+id/et_username"
     android:backgroundTint="@color/colorPrimaryDark"
     android:hint="@string/email"
+    android:textSize="22sp"
+    android:textColorHint="@color/gray"
     android:inputType="textEmailAddress"
 
 

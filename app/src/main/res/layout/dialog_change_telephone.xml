@@ -10,7 +10,8 @@
         android:layout_height="wrap_content"
         android:text="@string/forgot_telephone_dialog"
         android:layout_margin="20dp"
-        android:textSize="20sp">
+        android:textSize="20sp"
+        android:textColor="@color/gray">
 
     </TextView>
 

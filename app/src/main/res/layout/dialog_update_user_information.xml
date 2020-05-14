@@ -2,10 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     >
 
     <EditText
-        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:textColorHint="@color/gray"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -13,9 +14,10 @@
         android:layout_marginEnd="20dp"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
+        android:textSize="22sp"
         android:id="@+id/et_username"
         android:backgroundTint="@color/colorPrimaryDark"
-        android:hint="Metre a jour votre prénom"
+        android:hint="Mettre à jour votre prénom"
         android:inputType="textEmailAddress"
 
         />

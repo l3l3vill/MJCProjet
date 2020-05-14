@@ -45,6 +45,8 @@ class SoldFragment : Fragment(), View.OnClickListener {
     lateinit var makeAdvance : TextView
     lateinit var makeDistribution : TextView
     lateinit var solde : TextView
+    lateinit var buttonDonLink : TextView
+    lateinit var buttonDonPersonael : TextView
 
 
     lateinit var refDataBaseApp : DatabaseReference
@@ -74,10 +76,16 @@ class SoldFragment : Fragment(), View.OnClickListener {
         makeAdvance = binding.tvMakeAdvance
         makeDistribution = binding.tvMakeRepartition
         solde = binding.tvSolde
+        buttonDonLink = binding.tvDonLink
+        buttonDonPersonael = binding.tvDonPersonel
+
 
         makeDon.setOnClickListener(this)
         makeAdvance.setOnClickListener(this)
         makeDistribution.setOnClickListener(this)
+        buttonDonLink.setOnClickListener(this)
+        buttonDonPersonael.setOnClickListener(this)
+
         firebaseDatabase = FirebaseDatabase.getInstance()
 
 
@@ -90,6 +98,12 @@ class SoldFragment : Fragment(), View.OnClickListener {
         refDataBaseApp = FirebaseDatabase.getInstance().getReference("mjc_users_app")
         refDataBaseDatasource = FirebaseDatabase.getInstance().getReference("mjc_users_datasource")
 
+        Log.i(TAG,"${User.numberExistInDataBase}" )
+        Log.i("COMPANION", "sold ${User.numberExistInDataBase}")
+        if(User.numberExistInDataBase == true){
+            //alertDialogChangeTelephone()
+        }
+
         //TODO 0. retreave UserPhone
         refDataBaseApp.child(userId).addListenerForSingleValueEvent(object: ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
@@ -98,7 +112,7 @@ class SoldFragment : Fragment(), View.OnClickListener {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 userPhoneIntput = dataSnapshot.child("app_user_phone").value.toString()
-                Log.i("SOLDFRAGENT", "user Phone $userPhoneIntput")
+                Log.i(TAG, "user Phone $userPhoneIntput")
 
                 //TODO 1. Listener data source for retreave value whit phone number
                 refDataBaseDatasource.addValueEventListener(object : ValueEventListener{
@@ -112,17 +126,17 @@ class SoldFragment : Fragment(), View.OnClickListener {
                             for(snapshot in dataSnapshot.children){
                                 var userPhoneDataSoruce= snapshot.child("datasource_user_phone").value
                                 var user_first_conect = snapshot.child("datasource_user_first_connect").value
-                                if(userPhoneIntput != userPhoneDataSoruce  ){//&& user_first_conect != true
+                                if(userPhoneIntput != userPhoneDataSoruce ){//&& user_first_conect == true
                                     x = x
 
                                 }else{
                                     x = 1
                                     soldeDataSoruce = snapshot.child("datasource_user_amount_init").value.toString()
                                     //TODO 2. Update app_user with amount
-                                    val updateUserAmountInit = mapOf(
+                                    /*val updateUserAmountInit = mapOf(
                                         "app_user_amount" to soldeDataSoruce)
                                     refDataBaseApp.child(userId).updateChildren(updateUserAmountInit)
-
+*/
                                     //TODO 3. Set New amount to the view
                                     refDataBaseApp.child(userId).addListenerForSingleValueEvent(object: ValueEventListener{
                                         override fun onCancelled(p0: DatabaseError) {
@@ -130,15 +144,11 @@ class SoldFragment : Fragment(), View.OnClickListener {
 
                                         override fun onDataChange(dataSnapshot: DataSnapshot) {
                                             userSolde = dataSnapshot.child("app_user_amount").value.toString()
-                                            Log.i("SOLDFRAGENT" ,"user solde $userSolde")
+                                            Log.i(TAG ,"user solde $userSolde")
                                             solde.text = userSolde
                                         }
 
                                     })
-                                    //TODO 4. set firts connect to false in datasource
-                                    //val updateUserFirstConnectInDataSource = mapOf(
-                                      //  "datasource_user_first_connect" to "false")
-                                    //refDataBaseDatasource.child("datasource_user_first_connect").updateChildren(updateUserFirstConnectInDataSource)
 
 
                                 }
@@ -150,7 +160,7 @@ class SoldFragment : Fragment(), View.OnClickListener {
                                     "app_user_amount" to "0.0")
                                 refDataBaseApp.child(userId).updateChildren(updateUserAmountInit)
                                 solde.text = "0.0"
-                                alertDialogChangeTelephone()
+                                //alertDialogChangeTelephone()
                             }
                         }
                     }
@@ -200,14 +210,14 @@ class SoldFragment : Fragment(), View.OnClickListener {
 
     private fun alertDialogConfirmDon(){
         val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("Donation")
+        builder.setTitle("Don Solidaire")
         val view = layoutInflater.inflate(R.layout.dialog_confirmer_donation,null)
         val textDonation = view.findViewById<TextView>(R.id.tv_donation_dialog)
         //todo 1 ->concatenar con valores actuales de donación
-        textDonation.setText("Veuillez confirmer votre don de la totalité de votre crédit de ${solde.text.toString()}€")//
+        textDonation.setText("Veuillez confirmer votre don de la totalité de votre crédit de ${solde.text.toString()} €")//
         Log.i(TAG,"${solde.text}")
         builder.setView(view)
-        builder.setPositiveButton("Valider donation", DialogInterface.OnClickListener { _, _ ->
+        builder.setPositiveButton("Je valide", DialogInterface.OnClickListener { _, _ ->
             //todo 2 -> actualizar valores en base de datos
             val update = mapOf(
                 "app_user_action_type" to "Donation" ,
@@ -249,7 +259,7 @@ class SoldFragment : Fragment(), View.OnClickListener {
 
             refDataBaseApp.child(userId).updateChildren(update)
             //todo 3 ->toast con validación
-            Toast.makeText(context, "Validation de avoir", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Je valide", Toast.LENGTH_SHORT).show();
             //todo 4 -> navigate to thanks activity
             navController.navigate(R.id.action_soldFragment_to_advanceFragment)
 
@@ -298,6 +308,14 @@ class SoldFragment : Fragment(), View.OnClickListener {
                     alertDialogNoCredit()
                 }else{ navController.navigate(R.id.action_soldFragment_to_distributeFragment)
             } }
+            R.id.tv_don_link->{
+                val intent: Intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.helloasso.com/associations/mjc-espace-helios"))
+                startActivity(intent)
+            }
+            R.id.tv_don_personel->{
+                val intent: Intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.helloasso.com/associations/mjc-espace-helios/formulaires/1"))
+                startActivity(intent)
+            }
 
         }
     }

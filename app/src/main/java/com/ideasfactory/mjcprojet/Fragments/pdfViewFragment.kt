@@ -129,8 +129,8 @@ class pdfViewFragment : Fragment() {
                 userName.text = dataSnapshot.child("app_user_first_name").value.toString()
                 userLastName.text = dataSnapshot.child("app_user_name").value.toString()
                 userPhone.text = dataSnapshot.child("app_user_phone").value.toString()
-                userDon.text = dataSnapshot.child("app_user_amount_donation"). value.toString()
-                userAvoir.text = dataSnapshot.child("app_user_amount_voucher").value.toString()
+                userDon.text = "${dataSnapshot.child("app_user_amount_donation").value.toString()}0 €"
+                userAvoir.text = "${dataSnapshot.child("app_user_amount_voucher").value.toString()}0 €"
                 date.text = dataSnapshot.child("app_user_action_date").value.toString()
 
 
