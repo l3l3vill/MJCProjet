@@ -40,7 +40,7 @@
     <string name="button_don">Je souhaite faire un don solidaire de la totalité de mon crédit</string>
     <string name="button_don_link">Acheter un spectacle sur HelloAsso</string>
     <string name="button_don_personel">Faire un don personel à l\'association</string>
-    <string name="button_advance">Je souhaite un avoir sur la totalité</string>
+    <string name="button_advance">Je souhaite un avoir sur la totalité de mon crédit</string>
     <string name="button_repartition">Je souhaite faire une répartition entre un don solidaire et un avoir</string>
     <string name="thanks_donation_a">Toute l\'équipe vous remercie</string>
     <string name="thanks_donation_b">de votre soutien et espère vous revoir</string>
@@ -63,7 +63,7 @@
     <string name="distribute_a">Montant à répartir</string>
     <string name="distribute_donation">Je fais un don de :  </string>
     <string name="distribute_donation_a_mjc">Don à la MJC/ESPACE HELIOS</string>
-    <string name="distribute_avoir">Mon avoir sera de :  </string>
+    <string name="distribute_avoir">Mon avoir sera de : </string>
     <string name="distribute_validate">Je valide</string>
     <string name="distribute_validate_don">Valider don.</string>
     <string name="forgot_telephone_dialog">Votre numéro n’existe pas dans notre base de données. Veuillez contacter la MJC afin de mettre à jour vos données personnelles</string>

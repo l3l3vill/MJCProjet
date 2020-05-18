@@ -213,11 +213,16 @@ class SoldFragment : Fragment(), View.OnClickListener {
         builder.setTitle("Don Solidaire")
         val view = layoutInflater.inflate(R.layout.dialog_confirmer_donation,null)
         val textDonation = view.findViewById<TextView>(R.id.tv_donation_dialog)
+
+        builder.setPositiveButton("Non, je veux réfléchir", DialogInterface.OnClickListener { _, _ ->
+
+        })
+
         //todo 1 ->concatenar con valores actuales de donación
         textDonation.setText("Veuillez confirmer votre don de la totalité de votre crédit de ${solde.text.toString()} €")//
         Log.i(TAG,"${solde.text}")
         builder.setView(view)
-        builder.setPositiveButton("Je valide", DialogInterface.OnClickListener { _, _ ->
+        builder.setNegativeButton("Je valide", DialogInterface.OnClickListener { _, _ ->
             //todo 2 -> actualizar valores en base de datos
             val update = mapOf(
                 "app_user_action_type" to "Donation" ,
@@ -233,10 +238,9 @@ class SoldFragment : Fragment(), View.OnClickListener {
             navController.navigate(R.id.action_soldFragment_to_donnationFragment)
 
         })
-        builder.setNegativeButton("Non, je veux réfléchir", DialogInterface.OnClickListener { _, _ ->
-
-        })
         builder.show()
+
+
     }
 
     private fun alertDialogConfirmAvoir(){
@@ -245,10 +249,10 @@ class SoldFragment : Fragment(), View.OnClickListener {
         val view = layoutInflater.inflate(R.layout.dialog_confirmer_avoir,null)
         val textDonation = view.findViewById<TextView>(R.id.tv_avoir_dialog)
         //todo 1 ->concatenar con valores actuales de donación
-        textDonation.setText("Veuillez confirmer votre avoir de la totalité de votre crédit de ${solde.text.toString()}€?")//
+        textDonation.setText("Veuillez confirmer votre avoir de la totalité de votre crédit de ${solde.text.toString()} €")//
         Log.i(TAG,"${solde.text}")
         builder.setView(view)
-        builder.setPositiveButton("Je demande mon avoir", DialogInterface.OnClickListener { _, _ ->
+        builder.setNegativeButton("Je valide", DialogInterface.OnClickListener { _, _ ->
             //todo 2 -> actualizar valores en base de datos
             val update = mapOf(
                 "app_user_action_type" to "Avoir" ,
@@ -259,12 +263,12 @@ class SoldFragment : Fragment(), View.OnClickListener {
 
             refDataBaseApp.child(userId).updateChildren(update)
             //todo 3 ->toast con validación
-            Toast.makeText(context, "Je valide", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "Je valide", Toast.LENGTH_SHORT).show();
             //todo 4 -> navigate to thanks activity
             navController.navigate(R.id.action_soldFragment_to_advanceFragment)
 
         })
-        builder.setNegativeButton("Non, je veux réfléchir", DialogInterface.OnClickListener { _, _ ->
+        builder.setPositiveButton("Non, je veux réfléchir", DialogInterface.OnClickListener { _, _ ->
 
         })
         builder.show()

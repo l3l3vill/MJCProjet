@@ -23,7 +23,27 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Toute l'équipe de la MJC vous remercie de votre soutien et sera heureuse de vous retrouver pour la saison 2020/2021"
+            android:text="Toute l'équipe de la MJC vous remercie"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textColor="@color/gray"
+            >
+
+        </TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="de votre soutien et sera heureuse de vous"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textColor="@color/gray"
+            >
+
+        </TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="retrouver pour la saison 2020/2021"
             android:textSize="20sp"
             android:gravity="center"
             android:layout_marginBottom="20dp"

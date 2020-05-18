@@ -17,7 +17,7 @@
         android:textSize="22sp"
         android:id="@+id/et_username"
         android:backgroundTint="@color/colorPrimaryDark"
-        android:hint="Mettre à jour votre prénom"
+        android:hint=""
         android:inputType="textEmailAddress"
 
         />
