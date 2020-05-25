@@ -2,6 +2,7 @@ package com.ideasfactory.mjcprojet.Fragments
 
 
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -125,12 +126,13 @@ class pdfViewFragment : Fragment() {
 
             }
 
+            @SuppressLint("SetTextI18n")
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 userName.text = dataSnapshot.child("app_user_first_name").value.toString()
                 userLastName.text = dataSnapshot.child("app_user_name").value.toString()
                 userPhone.text = dataSnapshot.child("app_user_phone").value.toString()
-                userDon.text = "${dataSnapshot.child("app_user_amount_donation").value.toString()}0 €"
-                userAvoir.text = "${dataSnapshot.child("app_user_amount_voucher").value.toString()}0 €"
+                userDon.text = "${dataSnapshot.child("app_user_amount_donation").value.toString()} €"
+                userAvoir.text = "${dataSnapshot.child("app_user_amount_voucher").value.toString()} €"
                 date.text = dataSnapshot.child("app_user_action_date").value.toString()
 
 
@@ -173,6 +175,8 @@ class pdfViewFragment : Fragment() {
         // get view group using reference
         var linearLayoutPdf = view.findViewById<View>(R.id.linear_layout_pdf) as LinearLayout
         // convert view group to bitmap
+
+
         linearLayoutPdf.setDrawingCacheEnabled(true)
         linearLayoutPdf.buildDrawingCache()
         val bm: Bitmap = linearLayoutPdf.getDrawingCache()

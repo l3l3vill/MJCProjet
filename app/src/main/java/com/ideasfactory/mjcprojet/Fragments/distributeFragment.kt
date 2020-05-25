@@ -121,7 +121,7 @@ class distributeFragment : Fragment(), View.OnClickListener {
         val view = layoutInflater.inflate(R.layout.dialog_confirmer_desition,null)
         val textDesition = view.findViewById<TextView>(R.id.tv_desition)
         //todo 1 ->concatenar con valores actuales de donación
-        textDesition.setText("Veuillez confirmer votre don solidaire de ${etDon.text.toString()}.0 € et votre avoir de ${etAdvance.text} €")
+        textDesition.setText("Veuillez confirmer votre don solidaire de ${etDon.text.toString()} € et votre avoir de ${etAdvance.text} €")
         builder.setView(view)
         builder.setPositiveButton("Je valide", DialogInterface.OnClickListener { _, _ ->
             //todo 2 -> actualizar valores en base de datos

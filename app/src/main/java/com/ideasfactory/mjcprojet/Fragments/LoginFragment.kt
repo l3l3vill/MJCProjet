@@ -241,8 +241,7 @@ class LoginFragment : Fragment(), View.OnClickListener, Observer {
 
 
 
-
-        }
+    }
 
     //TODO -> READING ALL PHONE NUMBERS FROM APP_DATABASE
     //if numberExistInDataBase == true -> alert Dialog
@@ -343,7 +342,23 @@ class LoginFragment : Fragment(), View.OnClickListener, Observer {
             })
             }
 
+    fun updateUserInformation(){
+        val update = mapOf(
+            "app_user_action_date" to "",
+            "app_user_action_type" to "" ,
+            "app_user_amount" to userAppAmountInit,
+            "app_user_amount_donation" to "" ,
+            "app_user_amount_voucher" to "",
+            "app_user_first_name" to name.text.toString(),
+            "app_user_mail" to lastName.text.toString(),
+            "app_user_modified_date" to timeStamp,
+            "app_user_name" to name.text.toString(),
+            "app_user_os" to "Android",
+            "app_user_phone" to  telephone.text.toString()
+        )
 
+        refDataBaseApp.child(userId).updateChildren(update)
+    }
 
 
 

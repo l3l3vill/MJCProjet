@@ -18,7 +18,7 @@ android {
         applicationId "com.ideasfactory.mjcprojet"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 7 //change it when a new version will be upload
+        versionCode 14 //change it when a new version will be upload
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
